@@ -11,9 +11,9 @@ server:
 
 # ── 数据路径配置 ────────────────────────────────────────
 data:
-  training_dir: "E:\\zzq\\训练集_500"
+  training_dir: "E:\\zzq\\训练集\\vehicle-13631-v18-cls9_split_80_10_10\\train"
   full_training_dir: "E:\\zzq\\训练集\\vehicle-13631-v18-cls9"
-  test_dir: "E:\\zzq\\误报\\2025-04-01\\sample"
+  test_dir: "E:\\zzq\\误报"
 
 # ── 大模型配置 (统一使用小米 MiMo) ─────────────────────
 llm:
