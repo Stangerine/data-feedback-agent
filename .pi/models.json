@@ -1,0 +1,21 @@
+{
+  "providers": {
+    "openai": {
+      "name": "OpenAI",
+      "baseUrl": "https://api.openai.com/v1",
+      "apiKey": "sk-qgtulG0YJqOsdsfADDnKV6klJkPVhRyoSeG3uxMuG8TYmYDE",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "gpt-5.5",
+          "name": "OpenAI GPT-5.5",
+          "reasoning": false,
+          "input": ["text"],
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "contextWindow": 128000,
+          "maxTokens": 8192
+        }
+      ]
+    }
+  }
+}

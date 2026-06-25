@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# PI Agent sessions
+.pi/sessions/
+
+# Generated outputs
+analysis_results/
+tmp/
+services/detection-service/audit_logs/
+services/detection-service/correction_results/
+services/detection-service/eval_results/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+
+# Environment
+.env
+.env.local

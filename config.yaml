@@ -1,0 +1,51 @@
+# =====================================================
+# data-feedback-agent 全局配置文件
+# =====================================================
+# 所有服务共享此配置，无需单独的服务级配置文件
+
+# ── 服务器配置 ──────────────────────────────────────────
+server:
+  host: "0.0.0.0"
+  detection_service_port: 8001
+  data_analysis_port: 8002
+
+# ── 数据路径配置 ────────────────────────────────────────
+data:
+  training_dir: "E:\\zzq\\训练集_500"
+  full_training_dir: "E:\\zzq\\训练集\\vehicle-13631-v18-cls9"
+  test_dir: "E:\\zzq\\误报\\2025-04-01\\sample"
+
+# ── 大模型配置 (统一使用小米 MiMo) ─────────────────────
+llm:
+  api_url: "https://token-plan-cn.xiaomimimo.com/v1"
+  api_key: "tp-cc8s78z0n58uya5kdy7xmmukxmoyinfpq8qo23ogottwyq8x"
+  model: "mimo-v2.5"
+  timeout: 300
+  temperature: 0.1
+
+# ── 检测 API 配置 ──────────────────────────────────────
+detection:
+  api_url: "http://192.168.99.180:49080/api/request/objectDetection"
+
+# ── 语义维度分析配置 (BGE-VL-large 模型) ──────────────
+semantic:
+  model_name: "E:\\zzq\\model\\BGE-VL-large"
+  device: "cuda"  # 使用 GPU 运行 BGE-VL-large
+  batch_size: 16
+  cache_dir: "./semantic_cache"
+
+# ── 输出配置 ────────────────────────────────────────────
+output:
+  dir: "./analysis_results"
+
+# ── 类别配置 ────────────────────────────────────────────
+classes:
+  0: "wajueji"
+  1: "chanche"
+  2: "dazhuangji"
+  3: "yaluji"
+  4: "diaoche"
+  5: "gaokongche"
+  6: "youguanche"
+  7: "yunshuche"
+  8: "other"
