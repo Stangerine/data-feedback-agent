@@ -6,7 +6,7 @@ Construction vehicle detection data feedback system — PI Agent + Python FastAP
 
 - **检测校验**：调用远程 YOLO API 检测，LLM 多模态分析误报和漏检
 - **检测纠偏**：LLM 补充漏检的精确边界框，生成对比可视化图
-- **数据集分析**：5 维度分析（类别分布、Embedding 语义、图像质量、空间特征、LLM 归因）
+- **数据集分析**：7 维度语义分析（光照、视角、清晰度、天气、时间、环境、类别覆盖）+ LLM 归因
 - **交互式 Agent**：PI Agent 提供自然语言交互，自动调用对应工具
 
 ## 快速开始
@@ -19,21 +19,28 @@ Construction vehicle detection data feedback system — PI Agent + Python FastAP
 | Python | 3.10-3.12 (conda `zzq`) |
 | CUDA | BGE-VL-large 需要 GPU |
 
-### 1. 启动 Python 服务
+### 1. 安装 Python 依赖
+
+```bash
+conda activate zzq
+pip install -r requirements.txt
+```
+
+> 各子服务也有独立的 `requirements.txt`，可按需单独安装。
+
+### 2. 启动 Python 服务
 
 ```bash
 # 检测校验服务 (端口 8001)
 cd services/detection-service
-conda activate zzq
 bash start.sh
 
 # 数据分析服务 (端口 8002)
 cd ../data-analysis-service
-conda activate zzq
 uvicorn app:app --host 0.0.0.0 --port 8002
 ```
 
-### 2. 验证服务
+### 3. 验证服务
 
 ```bash
 # 检测服务
@@ -43,7 +50,7 @@ curl http://localhost:8001/health
 curl http://localhost:8002/health
 ```
 
-### 3. 启动 PI Agent
+### 4. 启动 PI Agent
 
 ```bash
 npm install
@@ -61,6 +68,7 @@ data-feedback-agent/
 ├── agent.ts                    # PI Agent 入口
 ├── tools.ts                    # 7 个 HTTP 工具封装
 ├── config.yaml                 # 共享配置（端口、LLM、数据路径）
+├── requirements.txt            # Python 依赖（合并两个服务）
 ├── .pi/                        # PI Agent 配置
 │   ├── settings.json           # 模型/Provider 配置
 │   └── skills/                 # 3 个工作流技能
@@ -86,7 +94,7 @@ data-feedback-agent/
          ├── verify_detection    → detection-service → YOLO API + MiMo LLM
          ├── correct_detection   → detection-service → 补充漏检 bbox + 对比图
          ├── analyze_dataset     → data-analysis-service → 类别分布统计
-         └── compare_data        → data-analysis-service → 5维度分析 + LLM归因
+         └── compare_data        → data-analysis-service → 7维度分析 + LLM归因
 ```
 
 - **Agent LLM** (GPT-5.5)：负责推理和工具选择
