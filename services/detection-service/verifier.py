@@ -133,8 +133,6 @@ class Verifier:
                      image_size=None):
         """构建审计记录"""
         cfg = get_config()
-        protocol = cfg.llm.protocol
-        model = getattr(cfg.llm, protocol).model
         return {
             "timestamp": datetime.now().isoformat(),
             "image_path": image_path,
@@ -142,8 +140,8 @@ class Verifier:
             "detections": detections,
             "ground_truth": ground_truth,
             "llm": {
-                "protocol": protocol,
-                "model": model,
+                "protocol": cfg.llm.protocol,
+                "model": cfg.llm.model,
             },
             "source": source,
             "raw_text": raw_text,

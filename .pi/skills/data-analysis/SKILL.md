@@ -1,90 +1,126 @@
 ---
 name: data-analysis
-description: 训练数据与测试数据对比分析，评估误报数据的回流价值，决定哪些测试数据值得加入训练集
+description: >
+  训练数据质量分析与误报归因。当用户提到"数据分析"、"误报归因"、"回流分析"、"训练集分析"、
+  "哪些数据值得回流"、"误报原因分析"、"data analysis"、"数据质量"、"训练数据分布"、
+  "补充训练数据"、"数据回流建议"时使用此技能。
+  也适用于用户问"为什么这个类别误报多"、"训练集缺什么数据"等关于数据质量的问题。
+  通过 BGE-VL-large embedding + LLM 归因，从7个维度分析误报/漏报的根本原因，
+  判断是数据缺陷还是其他因素，给出是否建议回流训练集的判断。
 ---
 
-# 数据分析技能 (data-analysis)
+# 训练数据质量分析与误报归因
 
-## 可用工具
+从类别分布、光照、视角、模糊、天气、时间、环境等 7 个维度分析误报/漏报的根本原因，
+判断是训练数据缺陷还是其他因素导致，给出数据回流建议。
 
-1. **analyze_dataset** — 数据集画像（类分布、bbox统计、图片尺寸）
-2. **compare_data** — 完整对比分析（5维度 + 评分 + 排序）
-3. **check_analysis_service** — 分析服务健康检查
+## 工具
 
-## 数据路径
+| 工具 | 用途 | 参数 |
+|------|------|------|
+| `check_analysis_service` | 检查服务状态 | 无参数 |
+| `analyze_dataset` | 数据集画像 | `data_dir`: 数据集目录路径 |
+| `analyze_single` | 单图归因分析 | 见下方详细说明 |
+| `analyze_batch` | 批量归因分析 | `training_dir`(可选), `test_dir`(可选) |
+| `export_analysis` | 导出结果 | `format`: json/csv, `min_level`: feedback/no_feedback/all |
 
-- 训练数据: `/home/shao/zzq/训练集_500`（500张子集）
-- 完整训练集: `/home/shao/zzq/训练集/vehicle-13631-v18-cls9`（12630张）
-- 误报测试数据: `/home/shao/zzq/误报`（59张）
+## 核心流程：单图归因分析
 
-## 操作流程
+这是最常用的流程，结合 detection-service 的校验结果进行深度归因：
 
-### 标准分析流程
+### 第一步：获取检测和校验结果
 
-1. **检查服务状态** — 先调用 `check_analysis_service` 确认服务可用
-2. **画像训练集** — 调用 `analyze_dataset(data_dir="/home/shao/zzq/训练集_500")`
-3. **画像测试集** — 调用 `analyze_dataset(data_dir="/home/shao/zzq/误报")`
-4. **运行对比分析** — 调用 `compare_data` 执行完整 5 维度分析
-5. **解读结果** — 根据评分排序，向用户汇报回流建议
+调用 `verify_detection`（来自 detection-review 技能）获取：
+- `detections`: 小模型检测结果
+- `verification.data.false_positives`: 误报列表
+- `verification.data.missed_detections`: 漏报列表
 
-### 快速分析流程（不需要LLM）
+### 第二步：调用归因分析
 
-调用 `compare_data(skip_llm=true)` 跳过 LLM 归因，只做统计 + 质量 + embedding 分析，速度更快。
+调用 `analyze_single`，参数：
 
-## 分析维度说明
-
-### 1. 类别覆盖分析
-- 统计训练集各类别样本数和占比
-- 识别训练集覆盖薄弱的类别（稀有类）
-- 对比测试集的类别分布，找出偏高的类
-
-### 2. Embedding 分布分析
-- 使用 bge-vl-large 模型提取图片特征
-- 计算测试图片到训练集分布的距离（OOD分数）
-- OOD分数越高 → 与训练分布差异越大 → 回流价值越高
-
-### 3. 图像质量分析
-- 使用 LIQE 模型评估图片质量（1-5分）
-- 识别场景类型和失真类型
-- 质量过低的图片不应回流（会引入噪声）
-
-### 4. 空间特征分析
-- 分析 bbox 尺寸分布（小/中/大目标）
-- 统计边缘目标占比
-- 小目标和边缘目标多 → 模型更难识别 → 回流价值高
-
-### 5. LLM 归因分析
-- 使用 GPT-5.5 分析误报根因
-- 归因类型: 背景干扰/类间混淆/遮挡截断/环境因素/标注错误
-- 环境因素和遮挡导致的误报，回流价值最高
-
-## 综合评分
-
-```
-feedback_score = 0.25×类别分 + 0.30×Embedding分 + 0.15×质量分 + 0.15×空间分 + 0.15×LLM分
-
-score >= 0.6 → 推荐回流 (high_value)
-score >= 0.3 → 建议人工复核 (medium_value)
-score < 0.3  → 不建议回流 (low_value)
+```json
+{
+  "image_path": "图片绝对路径",
+  "detections": [{"class_name": "diaoche", "confidence": 0.89}],
+  "false_positives": [{"class_name": "diaoche", "confidence": 0.9, "reason": "..."}],
+  "false_negatives": [{"class_name": "diazhuangji", "reason": "..."}],
+  "verification_result": { ... }
+}
 ```
 
-## 结果解读指南
+- `image_path` (必填): 图片的本地绝对路径
+- `detections` (可选): 当前检测结果
+- `false_positives` (可选): 误报列表，每项需 `class_name` 和 `confidence`
+- `false_negatives` (可选): 漏报列表，每项需 `class_name`
+- `verification_result` (可选): detection-service 的完整校验结果 JSON
 
-向用户汇报时，按以下结构组织：
+### 第三步：解读归因结果
 
-1. **总体概览**：测试集多少张，推荐回流多少张
-2. **高价值图片**：列出推荐回流的文件名和主要理由
-3. **类别分析**：哪些类别训练集覆盖不足
-4. **分布偏移**：测试集与训练集的特征差异
-5. **归因总结**：误报的主要原因类型分布
+归因结果包含：
 
-## 9类施工车辆
+| 字段 | 含义 |
+|------|------|
+| `attribution_type` | 归因类型（见下方表格） |
+| `confidence` | 归因置信度 (0-1) |
+| `main_cause_dimension` | 主要原因维度 |
+| `should_feedback` | 是否建议回流训练集 |
+| `feedback_suggestion` | 回流建议（中文） |
+| `dimension_attributions` | 各维度的详细归因 |
 
-| ID | 英文名 | 中文名 | 特征 |
-|----|--------|--------|------|
-| 0 | wajueji | 挖掘机 | 黄色/红色大型履带式 |
+## 批量分析流程
+
+对整个测试集进行批量归因：
+
+1. 调用 `check_analysis_service` 确认服务已初始化（首次需要较长时间计算训练集 embedding）
+2. 调用 `analyze_batch`，可选参数：
+   - `training_dir`: 训练集目录（默认使用 config.yaml 中的配置）
+   - `test_dir`: 测试集目录（默认使用 config.yaml 中的配置）
+3. 调用 `export_analysis` 导出结果
+
+## 归因类型
+
+| 归因类型 | 含义 | 回流建议 |
+|----------|------|----------|
+| 数据缺陷 | 训练集缺少该类别/场景的样本 | **强烈建议回流** |
+| 背景干扰 | 背景物体与目标视觉特征相似 | 建议回流 |
+| 类间混淆 | 不同目标类别的外观相似 | 建议回流 |
+| 遮挡截断 | 目标被遮挡或画面截断 | 视严重程度而定 |
+| 环境因素 | 特殊环境（雨天、夜晚等）导致 | 视频率而定 |
+| 标注错误 | 原始标注本身有误 | 需人工确认 |
+
+## 7 个分析维度
+
+每个维度会给出该图片的分类，以及训练集中该分类的覆盖比例。如果覆盖比例低且是误报主因，则标记为"覆盖缺口"。
+
+| 维度 | 分类值 | 说明 |
+|------|--------|------|
+| class | 对应9类车辆 | 训练集中该类别的样本占比 |
+| lighting | dim / bright / moderate | 光照条件 |
+| viewpoint | rear / front / overhead / side | 拍摄视角 |
+| blur | motion-blur / out-of-focus / sharp | 模糊程度 |
+| weather | rain / snow / cloudy / clear / fog | 天气条件 |
+| timeOfDay | day / night / dusk | 拍摄时间段 |
+| environment | construction-site / urban-street / indoor / aerial-scene / rural-field | 环境类型 |
+
+## 结果报告结构
+
+向用户汇报归因结果时：
+
+1. **一句话结论**: 归因类型 + 是否建议回流
+2. **主因维度**: 哪个维度是主要贡献因素，训练集覆盖情况
+3. **各维度详情**: 列出每个维度的分类和覆盖情况，标记覆盖缺口
+4. **回流建议**: 具体建议补充什么数据
+
+## 9 类施工车辆
+
+归因分析会引用这些类别名称：
+
+| ID | 英文名 | 中文名 | 视觉特征 |
+|----|--------|--------|----------|
+| 0 | wajueji | 挖掘机 | 黄色/红色大型履带式，有铲斗 |
 | 1 | chanche | 铲车 | 带铲斗的轮式装载机 |
-| 2 | dazhuangji | 打桩机 | 高耸柱状打桩设备 |
+| 2 | dazhuangji | 打桩机 | 高耸柱状打桩设备，刚性桅杆 |
 | 3 | yaluji | 压路机 | 大型钢轮碾压设备 |
 | 4 | diaoche | 吊车 | 带吊臂的起重设备 |
 | 5 | gaokongche | 高空车 | 带升降平台的作业车 |

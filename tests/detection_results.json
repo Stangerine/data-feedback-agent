@@ -1,0 +1,204 @@
+[
+  {
+    "image": "20250304175558461.jpg",
+    "detections": [
+      {
+        "class_id": 4,
+        "class_name": "diaoche",
+        "confidence": 0.886948823928833,
+        "bbox": [
+          437.19140625,
+          510.7265625,
+          616.869140625,
+          686.080078125
+        ]
+      }
+    ],
+    "verification": {
+      "success": true,
+      "data": {
+        "false_positives": [
+          {
+            "detection_index": 1,
+            "reported_class": "diaoche",
+            "actual_class": "dazhuangji",
+            "confidence": 0.9,
+            "reason": "该检测框覆盖的黄色设备具有高耸的刚性竖直桅杆结构，无柔性钢丝绳和吊钩，符合打桩机特征，而非吊车",
+            "bbox": []
+          }
+        ],
+        "missed_detections": [
+          {
+            "actual_class": "diaoche",
+            "actual_class_cn": "吊车",
+            "confidence": 0.95,
+            "region_hint": {
+              "x_min": 0.15,
+              "y_min": 0.45,
+              "x_max": 0.35,
+              "y_max": 0.68
+            },
+            "location": "画面左侧河道边",
+            "description": "红色吊车，具有明显的起重臂和吊钩结构，主体清晰可见",
+            "confidence_level": "high"
+          }
+        ],
+        "overall_assessment": {
+          "total_detections": 1,
+          "false_positive_count": 1,
+          "missed_detection_count": 1,
+          "detection_quality": "fair",
+          "summary": "图片中可见至少2台施工设备：红色吊车（左侧河道边，漏报）和黄色打桩机（中部，被误报为吊车）。小模型将打桩机误判为吊车，且遗漏了清晰可见的红色吊车。"
+        }
+      },
+      "raw_text": "{\"false_positives\": [{\"detection_index\": 1, \"reported_class\": \"diaoche\", \"actual_class\": \"dazhuangji\", \"confidence\": 0.9, \"reason\": \"该检测框覆盖的黄色设备具有高耸的刚性竖直桅杆结构，无柔性钢丝绳和吊钩，符合打桩机特征，而非吊车\"}], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence\": 0.95, \"confidence_level\": \"high\", \"location\": \"画面左侧河道边\", \"description\": \"红色吊车，具有明显的起重臂和吊钩结构，主体清晰可见\", \"region_hint\": {\"x_min\": 0.15, \"y_min\": 0.45, \"x_max\": 0.35, \"y_max\": 0.68}}], \"overall_assessment\": {\"total_detections\": 1, \"false_positive_count\": 1, \"missed_detection_count\": 1, \"detection_quality\": \"fair\", \"summary\": \"图片中可见至少2台施工设备：红色吊车（左侧河道边，漏报）和黄色打桩机（中部，被误报为吊车）。小模型将打桩机误判为吊车，且遗漏了清晰可见的红色吊车。\"}}",
+      "error": null,
+      "duration_ms": 18904,
+      "image_path": "E:\\zzq\\误报\\20250304175558461.jpg",
+      "image_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "detection_count": 1,
+      "attempts": 1
+    },
+    "correction": {
+      "success": true,
+      "image_path": "E:\\zzq\\误报\\20250304175558461.jpg",
+      "image_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class_name": "diaoche",
+          "confidence": 0.886948823928833,
+          "bbox": [
+            437.19140625,
+            510.7265625,
+            616.869140625,
+            686.080078125
+          ]
+        }
+      ],
+      "verification": {
+        "success": true,
+        "data": {
+          "false_positives": [
+            {
+              "detection_index": 1,
+              "reported_class": "diaoche",
+              "actual_class": "dazhuangji",
+              "confidence": 0.9,
+              "reason": "该检测框覆盖的黄色设备具有高耸的刚性竖直桅杆结构，无柔性钢丝绳和吊钩，符合打桩机特征，而非吊车",
+              "bbox": []
+            }
+          ],
+          "missed_detections": [
+            {
+              "actual_class": "diaoche",
+              "actual_class_cn": "吊车",
+              "confidence": 0.95,
+              "region_hint": {
+                "x_min": 0.15,
+                "y_min": 0.45,
+                "x_max": 0.35,
+                "y_max": 0.68
+              },
+              "location": "画面左侧河道边",
+              "description": "红色吊车，具有明显的起重臂和吊钩结构，主体清晰可见",
+              "confidence_level": "high"
+            }
+          ],
+          "overall_assessment": {
+            "total_detections": 1,
+            "false_positive_count": 1,
+            "missed_detection_count": 1,
+            "detection_quality": "fair",
+            "summary": "图片中可见至少2台施工设备：红色吊车（左侧河道边，漏报）和黄色打桩机（中部，被误报为吊车）。小模型将打桩机误判为吊车，且遗漏了清晰可见的红色吊车。"
+          }
+        },
+        "raw_text": "{\"false_positives\": [{\"detection_index\": 1, \"reported_class\": \"diaoche\", \"actual_class\": \"dazhuangji\", \"confidence\": 0.9, \"reason\": \"该检测框覆盖的黄色设备具有高耸的刚性竖直桅杆结构，无柔性钢丝绳和吊钩，符合打桩机特征，而非吊车\"}], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence\": 0.95, \"confidence_level\": \"high\", \"location\": \"画面左侧河道边\", \"description\": \"红色吊车，具有明显的起重臂和吊钩结构，主体清晰可见\", \"region_hint\": {\"x_min\": 0.15, \"y_min\": 0.45, \"x_max\": 0.35, \"y_max\": 0.68}}], \"overall_assessment\": {\"total_detections\": 1, \"false_positive_count\": 1, \"missed_detection_count\": 1, \"detection_quality\": \"fair\", \"summary\": \"图片中可见至少2台施工设备：红色吊车（左侧河道边，漏报）和黄色打桩机（中部，被误报为吊车）。小模型将打桩机误判为吊车，且遗漏了清晰可见的红色吊车。\"}}",
+        "error": null,
+        "duration_ms": 18904,
+        "image_path": "E:\\zzq\\误报\\20250304175558461.jpg",
+        "image_size": {
+          "width": 1920,
+          "height": 1080
+        },
+        "detection_count": 1,
+        "attempts": 1
+      },
+      "correction": {
+        "false_positive_corrections": [
+          {
+            "detection_index": 1,
+            "reported_class": "diaoche",
+            "corrected_class": "dazhuangji",
+            "corrected_class_cn": "打桩机",
+            "confidence": 0.9,
+            "reason": "该检测框覆盖的黄色设备具有高耸的刚性竖直桅杆结构，无柔性钢丝绳和吊钩，符合打桩机特征，而非吊车"
+          }
+        ],
+        "missed_detection_corrections": [
+          {
+            "missed_index": 1,
+            "class_name": "diaoche",
+            "class_name_cn": "吊车",
+            "bbox_normalized": {
+              "x_min": 0.14,
+              "y_min": 0.4,
+              "x_max": 0.23,
+              "y_max": 0.67
+            },
+            "confidence": 0.95,
+            "description": "红色吊车，位于左侧河道边，具有明显的起重臂和吊钩结构"
+          }
+        ],
+        "filtered_missed_detection_corrections": [],
+        "summary": "基于校验结果修正 1 个误报类别，补充 1 个漏报目标 bbox。 为校验确认的漏报目标（红色吊车）添加了bbox，位于画面左侧河道边，类别为吊车。"
+      },
+      "corrected_detections": [
+        {
+          "class_id": 2,
+          "class_name": "dazhuangji",
+          "confidence": 0.886948823928833,
+          "bbox": [
+            437.19140625,
+            510.7265625,
+            616.869140625,
+            686.080078125
+          ],
+          "source": "llm_corrected",
+          "original_class_name": "diaoche",
+          "original_class_id": 4,
+          "class_name_cn": "打桩机",
+          "correction_confidence": 0.9,
+          "correction_reason": "该检测框覆盖的黄色设备具有高耸的刚性竖直桅杆结构，无柔性钢丝绳和吊钩，符合打桩机特征，而非吊车"
+        },
+        {
+          "class_id": 4,
+          "class_name": "diaoche",
+          "class_name_cn": "吊车",
+          "confidence": 0.95,
+          "bbox": [
+            269,
+            432,
+            442,
+            724
+          ],
+          "description": "红色吊车，位于左侧河道边，具有明显的起重臂和吊钩结构",
+          "source": "llm_added"
+        }
+      ],
+      "artifacts": {
+        "dir": "correction_results\\20260626_150918_20250304175558461",
+        "small_model_image": "correction_results\\20260626_150918_20250304175558461\\small_model.jpg",
+        "corrected_image": "correction_results\\20260626_150918_20250304175558461\\corrected.jpg",
+        "result_json": "correction_results\\20260626_150918_20250304175558461\\result.json"
+      },
+      "duration_ms": 15978
+    }
+  }
+]

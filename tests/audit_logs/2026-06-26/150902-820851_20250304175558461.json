@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-06-26T15:09:02.804850",
+  "image_path": "E:\\zzq\\误报\\20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "mimo-v2.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"detection_index\": 1, \"reported_class\": \"diaoche\", \"actual_class\": \"dazhuangji\", \"confidence\": 0.9, \"reason\": \"该检测框覆盖的黄色设备具有高耸的刚性竖直桅杆结构，无柔性钢丝绳和吊钩，符合打桩机特征，而非吊车\"}], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence\": 0.95, \"confidence_level\": \"high\", \"location\": \"画面左侧河道边\", \"description\": \"红色吊车，具有明显的起重臂和吊钩结构，主体清晰可见\", \"region_hint\": {\"x_min\": 0.15, \"y_min\": 0.45, \"x_max\": 0.35, \"y_max\": 0.68}}], \"overall_assessment\": {\"total_detections\": 1, \"false_positive_count\": 1, \"missed_detection_count\": 1, \"detection_quality\": \"fair\", \"summary\": \"图片中可见至少2台施工设备：红色吊车（左侧河道边，漏报）和黄色打桩机（中部，被误报为吊车）。小模型将打桩机误判为吊车，且遗漏了清晰可见的红色吊车。\"}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "actual_class": "dazhuangji",
+        "confidence": 0.9,
+        "reason": "该检测框覆盖的黄色设备具有高耸的刚性竖直桅杆结构，无柔性钢丝绳和吊钩，符合打桩机特征，而非吊车",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "confidence": 0.95,
+        "region_hint": {
+          "x_min": 0.15,
+          "y_min": 0.45,
+          "x_max": 0.35,
+          "y_max": 0.68
+        },
+        "location": "画面左侧河道边",
+        "description": "红色吊车，具有明显的起重臂和吊钩结构，主体清晰可见",
+        "confidence_level": "high"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 1,
+      "missed_detection_count": 1,
+      "detection_quality": "fair",
+      "summary": "图片中可见至少2台施工设备：红色吊车（左侧河道边，漏报）和黄色打桩机（中部，被误报为吊车）。小模型将打桩机误判为吊车，且遗漏了清晰可见的红色吊车。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 18904
+}

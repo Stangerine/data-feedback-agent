@@ -1,0 +1,15 @@
+[
+  {
+    "image": "20250304175558461.jpg",
+    "attribution": {
+      "filename": "20250304175558461.jpg",
+      "attribution_type": "其他",
+      "confidence": 0.0,
+      "reasoning": "LLM 客户端不可用",
+      "main_cause_dimension": "unknown",
+      "dimension_attributions": [],
+      "feedback_suggestion": "需要人工复核",
+      "should_feedback": true
+    }
+  }
+]

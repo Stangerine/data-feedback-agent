@@ -89,6 +89,7 @@ class DetectionConfig:
 
 @dataclass
 class LLMConfig:
+    protocol: str = "openai"
     api_url: str = ""
     api_key: str = ""
     model: str = ""

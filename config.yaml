@@ -17,6 +17,7 @@ data:
 
 # ── 大模型配置 (统一使用小米 MiMo) ─────────────────────
 llm:
+  protocol: "openai"
   api_url: "https://token-plan-cn.xiaomimimo.com/v1"
   api_key: "tp-cc8s78z0n58uya5kdy7xmmukxmoyinfpq8qo23ogottwyq8x"
   model: "mimo-v2.5"
@@ -26,6 +27,7 @@ llm:
 # ── 检测 API 配置 ──────────────────────────────────────
 detection:
   api_url: "http://192.168.99.180:49080/api/request/objectDetection"
+  model_id: "wajueji_chanche_202606111433"
 
 # ── 语义维度分析配置 (BGE-VL-large 模型) ──────────────
 semantic:
