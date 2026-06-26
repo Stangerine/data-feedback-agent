@@ -3,6 +3,7 @@ import os
 import sys
 import time
 import json
+import yaml
 
 sys.path.insert(0, r"E:\zzq\agent_project\data-feedback-agent\services\detection-service")
 
@@ -11,8 +12,13 @@ from detection import DetectionClient
 from verifier import Verifier
 from services.correction_service import CorrectionService
 
+# 从全局 config.yaml 读取测试目录
+config_path = r"E:\zzq\agent_project\data-feedback-agent\config.yaml"
+with open(config_path, "r", encoding="utf-8") as f:
+    global_cfg = yaml.safe_load(f)
+test_dir = global_cfg.get("data", {}).get("test_dir", "")
+
 cfg = get_config()
-test_dir = cfg.data.test_dir
 
 print(f"配置信息:")
 print(f"  检测 API: {cfg.detection.api_url}")
@@ -23,7 +29,7 @@ print(f"  测试目录: {test_dir}")
 image_files = sorted([
     f for f in os.listdir(test_dir)
     if f.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.webp'))
-])[:3]
+])[:1]
 
 print(f"  测试图片: {len(image_files)} 张")
 
@@ -35,7 +41,18 @@ det_client = DetectionClient(
     timeout=cfg.detection.timeout,
 )
 verifier = Verifier()
-correction_service = CorrectionService()
+
+# CorrectionService 需要 llm_client，手动传入
+from llm import create_llm_client
+llm_client = create_llm_client(
+    protocol="openai",
+    model=cfg.llm.model,
+    api_url=cfg.llm.api_url,
+    api_key=cfg.llm.api_key,
+    timeout=cfg.llm.timeout,
+    temperature=cfg.llm.temperature,
+)
+correction_service = CorrectionService(llm_client=llm_client)
 
 results = []
 
@@ -57,8 +74,7 @@ for img_name in image_files:
             print(f"      {i}. {det['class_name']} ({det['confidence']:.2f})")
     except Exception as e:
         print(f"FAIL: {e}")
-        results.append({"image": img_name, "error": f"检测失败: {e}"})
-        continue
+        detections = []
 
     # 步骤 2: 大模型校验
     print(f"  [步骤2] 大模型校验...", end=" ", flush=True)

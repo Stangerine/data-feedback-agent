@@ -17,6 +17,13 @@ print(f"配置信息:")
 print(f"  训练集: {training_dir}")
 print(f"  测试集: {test_dir}")
 
+# 使用已有的缓存目录
+cache_dir = r"E:\zzq\agent_project\data-feedback-agent\tests\semantic_cache"
+print(f"  缓存目录: {cache_dir}")
+
+# 修改配置使用已有的缓存
+cfg["semantic"]["cache_dir"] = cache_dir
+
 # 初始化 Pipeline
 print(f"\n初始化分析 Pipeline...")
 pipeline = AnalysisPipeline(cfg)
@@ -31,7 +38,7 @@ print(f"初始化完成 ({init_time:.2f}s)")
 image_files = sorted([
     f for f in os.listdir(test_dir)
     if f.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.webp'))
-])[:3]
+])[:1]
 
 print(f"\n测试图片: {len(image_files)} 张")
 

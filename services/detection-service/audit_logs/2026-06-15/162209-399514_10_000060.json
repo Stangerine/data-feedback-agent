@@ -1,0 +1,81 @@
+{
+  "timestamp": "2026-06-15T16:22:09.399235",
+  "image_path": "/home/shao/zzq/正确/10_000060.jpg",
+  "image_size": {
+    "width": 1280,
+    "height": 720
+  },
+  "detections": [
+    {
+      "class_id": 3,
+      "class_name": "yaluji",
+      "confidence": 0.9658355116844177,
+      "bbox": [
+        697.00390625,
+        502.1484375,
+        923.640625,
+        701.015625
+      ]
+    },
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "confidence": 0.9460360407829285,
+      "bbox": [
+        335.3201599121094,
+        372.4634704589844,
+        454.2425842285156,
+        528.9452514648438
+      ]
+    },
+    {
+      "class_id": 8,
+      "class_name": "other",
+      "confidence": 0.9080309271812439,
+      "bbox": [
+        594.8984375,
+        460.875,
+        644.4140625,
+        533.65625
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"detection_index\": 3, \"reason\": \"检测框覆盖的是右侧道路边一台小型黄色挖掘机/工程机械，具备挖掘机外形特征，不应标为其他类别。\", \"reported_class\": \"other\"}], \"missed_detections\": [{\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"confidence_level\": \"medium\", \"description\": \"右侧道路中远处还有一台小型黄色挖掘机/工程车，轮廓较清晰且未被任何检测框覆盖。\", \"location\": \"图像中部偏右，建筑玻璃幕墙旁、检测框3左侧附近\"}], \"overall_assessment\": {\"detection_quality\": \"fair\", \"false_positive_count\": 1, \"missed_detection_count\": 1, \"summary\": \"检测到的压路机和中部挖掘机位置与类别基本正确；第3个检测框将小型挖掘机误标为其他。另有一台中远处小型工程车辆较清晰但未被检测。\", \"total_detections\": 3}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 3,
+        "reported_class": "other",
+        "actual_class": "wajueji",
+        "reason": "检测框覆盖的是右侧道路边一台小型黄色挖掘机/工程机械，具备挖掘机外形特征，不应标为其他类别。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [
+      {
+        "actual_class": "wajueji",
+        "actual_class_cn": "挖掘机",
+        "location": "图像中部偏右，建筑玻璃幕墙旁、检测框3左侧附近",
+        "description": "右侧道路中远处还有一台小型黄色挖掘机/工程车，轮廓较清晰且未被任何检测框覆盖。",
+        "confidence_level": "medium"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 3,
+      "false_positive_count": 1,
+      "missed_detection_count": 1,
+      "detection_quality": "fair",
+      "summary": "检测到的压路机和中部挖掘机位置与类别基本正确；第3个检测框将小型挖掘机误标为其他。另有一台中远处小型工程车辆较清晰但未被检测。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 22920
+}

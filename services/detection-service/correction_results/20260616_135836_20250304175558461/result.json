@@ -1,0 +1,189 @@
+{
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "small_model_detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "verification": {
+    "success": true,
+    "data": {
+      "false_positives": [
+        {
+          "detection_index": 1,
+          "reported_class": "diaoche",
+          "actual_class": "wajueji",
+          "confidence": 0.86,
+          "reason": "检测框覆盖的是一台橙色挖掘机/长臂挖机，能看到履带底盘和多节挖臂结构，未见吊车必需的钢丝绳与吊钩，类别标为吊车不正确。",
+          "bbox": []
+        }
+      ],
+      "missed_detections": [
+        {
+          "actual_class": "wajueji",
+          "actual_class_cn": "挖掘机",
+          "confidence": 0.82,
+          "location": "图像左下偏中，水边施工区内，约 x=340-430, y=705-790",
+          "description": "施工场地左下区域有一台小型橙色挖掘机，履带底盘和挖臂/铲斗特征清楚，未被任何检测框覆盖。",
+          "confidence_level": "high"
+        },
+        {
+          "actual_class": "diaoche",
+          "actual_class_cn": "吊车",
+          "confidence": 0.72,
+          "location": "图像中下部偏左，建筑旁施工区，约 x=575-700, y=635-840",
+          "description": "施工场地中下部有一台带红色桁架臂的起重设备，底盘和起重臂较清楚，疑似可见吊装结构，未被现有检测框覆盖。",
+          "confidence_level": "medium"
+        },
+        {
+          "actual_class": "other",
+          "actual_class_cn": "其他",
+          "confidence": 0.7,
+          "location": "图像中部偏左靠近建筑外墙，约 x=670-790, y=540-710",
+          "description": "施工场地中部有一台大型黄色专用工程设备，主体和支撑结构清晰，但从俯视角难以确认是否为吊车或桩工设备，按其他工程机械记录，未被检测框覆盖。",
+          "confidence_level": "medium"
+        }
+      ],
+      "overall_assessment": {
+        "total_detections": 1,
+        "false_positive_count": 1,
+        "missed_detection_count": 3,
+        "detection_quality": "poor",
+        "summary": "现有唯一检测框覆盖真实工程机械但类别错误：应为挖掘机而非吊车。施工区域内还存在数台尺寸足够、主体清晰的未检工程车辆/设备；远处道路普通车辆和不清晰小目标未计入漏报。"
+      }
+    },
+    "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"confidence\": 0.86, \"detection_index\": 1, \"reason\": \"检测框覆盖的是一台橙色挖掘机/长臂挖机，能看到履带底盘和多节挖臂结构，未见吊车必需的钢丝绳与吊钩，类别标为吊车不正确。\", \"reported_class\": \"diaoche\"}], \"missed_detections\": [{\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"confidence\": 0.82, \"confidence_level\": \"high\", \"description\": \"施工场地左下区域有一台小型橙色挖掘机，履带底盘和挖臂/铲斗特征清楚，未被任何检测框覆盖。\", \"location\": \"图像左下偏中，水边施工区内，约 x=340-430, y=705-790\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence\": 0.72, \"confidence_level\": \"medium\", \"description\": \"施工场地中下部有一台带红色桁架臂的起重设备，底盘和起重臂较清楚，疑似可见吊装结构，未被现有检测框覆盖。\", \"location\": \"图像中下部偏左，建筑旁施工区，约 x=575-700, y=635-840\"}, {\"actual_class\": \"other\", \"actual_class_cn\": \"其他\", \"confidence\": 0.7, \"confidence_level\": \"medium\", \"description\": \"施工场地中部有一台大型黄色专用工程设备，主体和支撑结构清晰，但从俯视角难以确认是否为吊车或桩工设备，按其他工程机械记录，未被检测框覆盖。\", \"location\": \"图像中部偏左靠近建筑外墙，约 x=670-790, y=540-710\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 1, \"missed_detection_count\": 3, \"summary\": \"现有唯一检测框覆盖真实工程机械但类别错误：应为挖掘机而非吊车。施工区域内还存在数台尺寸足够、主体清晰的未检工程车辆/设备；远处道路普通车辆和不清晰小目标未计入漏报。\", \"total_detections\": 1}}",
+    "error": null,
+    "duration_ms": 27629,
+    "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+    "image_size": {
+      "width": 1920,
+      "height": 1080
+    },
+    "detection_count": 1,
+    "attempts": 1
+  },
+  "correction": {
+    "false_positive_corrections": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "corrected_class": "wajueji",
+        "corrected_class_cn": "挖掘机",
+        "confidence": 0.86,
+        "reason": "检测框覆盖的是一台橙色挖掘机/长臂挖机，能看到履带底盘和多节挖臂结构，未见吊车必需的钢丝绳与吊钩，类别标为吊车不正确。"
+      }
+    ],
+    "missed_detection_corrections": [
+      {
+        "bbox_normalized": {
+          "x_max": 0.224,
+          "x_min": 0.177,
+          "y_max": 0.732,
+          "y_min": 0.651
+        },
+        "class_name": "wajueji",
+        "class_name_cn": "挖掘机",
+        "confidence": 0.82,
+        "description": "图像左下偏中水边施工区内的小型橙色挖掘机，可见履带底盘及挖臂/铲斗，框住其可见机身和作业臂。",
+        "missed_index": 1
+      },
+      {
+        "bbox_normalized": {
+          "x_max": 0.365,
+          "x_min": 0.3,
+          "y_max": 0.78,
+          "y_min": 0.485
+        },
+        "class_name": "diaoche",
+        "class_name_cn": "吊车",
+        "confidence": 0.72,
+        "description": "图像中下部偏左、建筑旁施工区的红色桁架臂起重设备，包含可见红色臂架、底盘及吊装结构区域。",
+        "missed_index": 2
+      },
+      {
+        "bbox_normalized": {
+          "x_max": 0.414,
+          "x_min": 0.351,
+          "y_max": 0.658,
+          "y_min": 0.5
+        },
+        "class_name": "other",
+        "class_name_cn": "其他",
+        "confidence": 0.7,
+        "description": "图像中部偏左靠近建筑外墙的大型黄色专用工程设备，框住可见黄色主体、支撑和上部结构。",
+        "missed_index": 3
+      }
+    ],
+    "summary": "基于校验结果修正 1 个误报类别，补充 3 个漏报目标 bbox。 已按 /api/verify 确认的 3 个漏报目标分别补充归一化 bbox；未新增其他目标，未处理 false_positive。"
+  },
+  "corrected_detections": [
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ],
+      "source": "llm_corrected",
+      "original_class_name": "diaoche",
+      "original_class_id": 4,
+      "class_name_cn": "挖掘机",
+      "correction_confidence": 0.86,
+      "correction_reason": "检测框覆盖的是一台橙色挖掘机/长臂挖机，能看到履带底盘和多节挖臂结构，未见吊车必需的钢丝绳与吊钩，类别标为吊车不正确。"
+    },
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "class_name_cn": "挖掘机",
+      "confidence": 0.82,
+      "bbox": [
+        340,
+        703,
+        430,
+        791
+      ],
+      "description": "图像左下偏中水边施工区内的小型橙色挖掘机，可见履带底盘及挖臂/铲斗，框住其可见机身和作业臂。",
+      "source": "llm_added"
+    },
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "class_name_cn": "吊车",
+      "confidence": 0.72,
+      "bbox": [
+        576,
+        524,
+        701,
+        842
+      ],
+      "description": "图像中下部偏左、建筑旁施工区的红色桁架臂起重设备，包含可见红色臂架、底盘及吊装结构区域。",
+      "source": "llm_added"
+    },
+    {
+      "class_id": 8,
+      "class_name": "other",
+      "class_name_cn": "其他",
+      "confidence": 0.7,
+      "bbox": [
+        674,
+        540,
+        795,
+        711
+      ],
+      "description": "图像中部偏左靠近建筑外墙的大型黄色专用工程设备，框住可见黄色主体、支撑和上部结构。",
+      "source": "llm_added"
+    }
+  ]
+}

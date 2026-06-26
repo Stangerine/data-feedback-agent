@@ -1,0 +1,69 @@
+{
+  "timestamp": "2026-06-16T13:37:03.246256",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"confidence\": 0.86, \"detection_index\": 1, \"reason\": \"检测框覆盖的是工地内橙色挖掘机/挖臂设备，能看到工程机械底盘和刚性挖臂结构，但未见吊车判定所需的柔性钢丝绳、吊钩和展开支腿，类别标为吊车证据不足。\", \"reported_class\": \"diaoche\"}], \"missed_detections\": [{\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"confidence\": 0.82, \"confidence_level\": \"high\", \"description\": \"另一台橙色小型挖掘机主体和挖臂清晰可见，位于已检框下方偏左，未被任何检测框覆盖。\", \"location\": \"施工区域中下部偏左，水池右侧土方边缘附近\"}, {\"actual_class\": \"dazhuangji\", \"actual_class_cn\": \"打桩机\", \"confidence\": 0.78, \"confidence_level\": \"medium\", \"description\": \"黄色履带式设备带有较高的竖直刚性桅杆/导轨和作业装置，主体清晰，未被检测框覆盖，较符合打桩机特征。\", \"location\": \"施工区域中央偏右，黑色楼体左侧、红色竖向构件旁\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 1, \"missed_detection_count\": 2, \"summary\": \"唯一检测框把挖掘机误判为吊车；画面中施工区域还有清晰未检出的挖掘机和一台疑似打桩机/桩工设备。远处道路车辆多为普通社会车辆，不计入工地车辆漏报；部分杆件和小型设备因类别或可见性不足未计漏报。\", \"total_detections\": 1}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "actual_class": "wajueji",
+        "confidence": 0.86,
+        "reason": "检测框覆盖的是工地内橙色挖掘机/挖臂设备，能看到工程机械底盘和刚性挖臂结构，但未见吊车判定所需的柔性钢丝绳、吊钩和展开支腿，类别标为吊车证据不足。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [
+      {
+        "actual_class": "wajueji",
+        "actual_class_cn": "挖掘机",
+        "confidence": 0.82,
+        "location": "施工区域中下部偏左，水池右侧土方边缘附近",
+        "description": "另一台橙色小型挖掘机主体和挖臂清晰可见，位于已检框下方偏左，未被任何检测框覆盖。",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "dazhuangji",
+        "actual_class_cn": "打桩机",
+        "confidence": 0.78,
+        "location": "施工区域中央偏右，黑色楼体左侧、红色竖向构件旁",
+        "description": "黄色履带式设备带有较高的竖直刚性桅杆/导轨和作业装置，主体清晰，未被检测框覆盖，较符合打桩机特征。",
+        "confidence_level": "medium"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 1,
+      "missed_detection_count": 2,
+      "detection_quality": "poor",
+      "summary": "唯一检测框把挖掘机误判为吊车；画面中施工区域还有清晰未检出的挖掘机和一台疑似打桩机/桩工设备。远处道路车辆多为普通社会车辆，不计入工地车辆漏报；部分杆件和小型设备因类别或可见性不足未计漏报。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 24127
+}

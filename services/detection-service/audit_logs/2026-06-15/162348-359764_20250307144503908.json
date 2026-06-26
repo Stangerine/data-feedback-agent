@@ -1,0 +1,124 @@
+{
+  "timestamp": "2026-06-15T16:23:48.359483",
+  "image_path": "/home/shao/zzq/误报/2025-04-01/sample/images/20250307144503908.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.9489705562591553,
+      "bbox": [
+        831.09375,
+        636.71484375,
+        1133.015625,
+        849.10546875
+      ]
+    },
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.9134074449539185,
+      "bbox": [
+        755.34375,
+        412.6640625,
+        966.73828125,
+        621.19921875
+      ]
+    },
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "confidence": 0.8862314820289612,
+      "bbox": [
+        458.833740234375,
+        445.5555725097656,
+        634.3954467773438,
+        565.7730712890625
+      ]
+    },
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "confidence": 0.8175221681594849,
+      "bbox": [
+        761.5323486328125,
+        344.16912841796875,
+        854.6431274414062,
+        436.27801513671875
+      ]
+    },
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.6299819946289062,
+      "bbox": [
+        749.765625,
+        411.3984375,
+        888.5625,
+        564.234375
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"detection_index\": 1, \"reason\": \"检测框主要覆盖下方橙色挖掘机及地面区域，并未准确框住吊车主体，类别与框内主要目标不符。\", \"reported_class\": \"diaoche\"}, {\"actual_class\": \"chanche\", \"detection_index\": 4, \"reason\": \"检测框内目标更像黄色铲车/装载机，非挖掘机，类别明显错误。\", \"reported_class\": \"wajueji\"}, {\"actual_class\": \"yunshuche\", \"detection_index\": 5, \"reason\": \"与第2个检测框重复覆盖同一辆绿色运输车，图片中该区域没有第二辆独立运输车。\", \"reported_class\": \"yunshuche\"}], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"high\", \"description\": \"右侧工地内有一台大型红色臂架、黄色底盘的履带吊车，主体和吊臂清晰可见，但没有被准确检测框覆盖。\", \"location\": \"画面右侧中上部至中下部，靠近高楼外墙和绿色施工箱体旁\"}, {\"actual_class\": \"dazhuangji\", \"actual_class_cn\": \"打桩机\", \"confidence_level\": \"high\", \"description\": \"右侧吊车旁有一台黄色打桩/桩工设备，竖直桅杆和底部机身清晰可见，未被检测到。\", \"location\": \"画面右侧中部，红色吊车下方偏右、建筑外墙左侧\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 3, \"missed_detection_count\": 2, \"summary\": \"5个检测中有3个存在问题：第1个吊车框实际主要覆盖挖掘机，第4个挖掘机类别疑似应为铲车，第5个为绿色运输车重复框。另漏检了右侧清晰可见的大型吊车和黄色打桩设备。\", \"total_detections\": 5}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "actual_class": "wajueji",
+        "reason": "检测框主要覆盖下方橙色挖掘机及地面区域，并未准确框住吊车主体，类别与框内主要目标不符。",
+        "bbox": []
+      },
+      {
+        "detection_index": 4,
+        "reported_class": "wajueji",
+        "actual_class": "chanche",
+        "reason": "检测框内目标更像黄色铲车/装载机，非挖掘机，类别明显错误。",
+        "bbox": []
+      },
+      {
+        "detection_index": 5,
+        "reported_class": "yunshuche",
+        "actual_class": "yunshuche",
+        "reason": "与第2个检测框重复覆盖同一辆绿色运输车，图片中该区域没有第二辆独立运输车。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面右侧中上部至中下部，靠近高楼外墙和绿色施工箱体旁",
+        "description": "右侧工地内有一台大型红色臂架、黄色底盘的履带吊车，主体和吊臂清晰可见，但没有被准确检测框覆盖。",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "dazhuangji",
+        "actual_class_cn": "打桩机",
+        "location": "画面右侧中部，红色吊车下方偏右、建筑外墙左侧",
+        "description": "右侧吊车旁有一台黄色打桩/桩工设备，竖直桅杆和底部机身清晰可见，未被检测到。",
+        "confidence_level": "high"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 5,
+      "false_positive_count": 3,
+      "missed_detection_count": 2,
+      "detection_quality": "poor",
+      "summary": "5个检测中有3个存在问题：第1个吊车框实际主要覆盖挖掘机，第4个挖掘机类别疑似应为铲车，第5个为绿色运输车重复框。另漏检了右侧清晰可见的大型吊车和黄色打桩设备。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 64068
+}

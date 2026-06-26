@@ -1,0 +1,189 @@
+{
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "small_model_detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "verification": {
+    "success": true,
+    "data": {
+      "false_positives": [
+        {
+          "detection_index": 1,
+          "reported_class": "diaoche",
+          "actual_class": "wajueji",
+          "confidence": 0.84,
+          "reason": "检测框覆盖的是橙红色履带式挖掘机/长臂挖掘设备，能看到履带底盘和多节挖臂形态，未见吊车典型的柔性钢丝绳、吊钩或支腿，类别标为吊车不正确。",
+          "bbox": []
+        }
+      ],
+      "missed_detections": [
+        {
+          "actual_class": "diaoche",
+          "actual_class_cn": "吊车",
+          "confidence": 0.86,
+          "location": "图像中部偏下、建筑左侧工地内，约 x620-770, y570-780 区域",
+          "description": "画面中部偏下有一台黄色履带/工程吊装设备，带长臂/桁架臂及明显工程底盘，主体清晰且未被已有检测框覆盖。",
+          "confidence_level": "high"
+        },
+        {
+          "actual_class": "diaoche",
+          "actual_class_cn": "吊车",
+          "confidence": 0.8,
+          "location": "图像中部偏左，约 x560-650, y520-815 区域",
+          "description": "工地中部靠左有一根红色竖向桁架臂和底部黄色工程设备，呈吊装设备特征，主体尺寸足够且没有检测框覆盖。",
+          "confidence_level": "high"
+        },
+        {
+          "actual_class": "wajueji",
+          "actual_class_cn": "挖掘机",
+          "confidence": 0.82,
+          "location": "图像下方偏左工地入口附近，约 x535-620, y700-780 区域",
+          "description": "下方工地内有一台橙色小型挖掘机，履带底盘和折臂/铲斗可见，未被任何检测框覆盖。",
+          "confidence_level": "high"
+        }
+      ],
+      "overall_assessment": {
+        "total_detections": 1,
+        "false_positive_count": 1,
+        "missed_detection_count": 3,
+        "detection_quality": "poor",
+        "summary": "唯一检测框覆盖了真实工程机械但类别误判为吊车；同时工地内仍有多台清晰可见的吊装/挖掘设备未检出。远处道路车辆和较小、遮挡严重的疑似设备未计入漏报。"
+      }
+    },
+    "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"confidence\": 0.84, \"detection_index\": 1, \"reason\": \"检测框覆盖的是橙红色履带式挖掘机/长臂挖掘设备，能看到履带底盘和多节挖臂形态，未见吊车典型的柔性钢丝绳、吊钩或支腿，类别标为吊车不正确。\", \"reported_class\": \"diaoche\"}], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence\": 0.86, \"confidence_level\": \"high\", \"description\": \"画面中部偏下有一台黄色履带/工程吊装设备，带长臂/桁架臂及明显工程底盘，主体清晰且未被已有检测框覆盖。\", \"location\": \"图像中部偏下、建筑左侧工地内，约 x620-770, y570-780 区域\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence\": 0.8, \"confidence_level\": \"high\", \"description\": \"工地中部靠左有一根红色竖向桁架臂和底部黄色工程设备，呈吊装设备特征，主体尺寸足够且没有检测框覆盖。\", \"location\": \"图像中部偏左，约 x560-650, y520-815 区域\"}, {\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"confidence\": 0.82, \"confidence_level\": \"high\", \"description\": \"下方工地内有一台橙色小型挖掘机，履带底盘和折臂/铲斗可见，未被任何检测框覆盖。\", \"location\": \"图像下方偏左工地入口附近，约 x535-620, y700-780 区域\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 1, \"missed_detection_count\": 3, \"summary\": \"唯一检测框覆盖了真实工程机械但类别误判为吊车；同时工地内仍有多台清晰可见的吊装/挖掘设备未检出。远处道路车辆和较小、遮挡严重的疑似设备未计入漏报。\", \"total_detections\": 1}}",
+    "error": null,
+    "duration_ms": 31725,
+    "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+    "image_size": {
+      "width": 1920,
+      "height": 1080
+    },
+    "detection_count": 1,
+    "attempts": 1
+  },
+  "correction": {
+    "false_positive_corrections": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "corrected_class": "wajueji",
+        "corrected_class_cn": "挖掘机",
+        "confidence": 0.84,
+        "reason": "检测框覆盖的是橙红色履带式挖掘机/长臂挖掘设备，能看到履带底盘和多节挖臂形态，未见吊车典型的柔性钢丝绳、吊钩或支腿，类别标为吊车不正确。"
+      }
+    ],
+    "missed_detection_corrections": [
+      {
+        "bbox_normalized": {
+          "x_max": 0.4115,
+          "x_min": 0.3313,
+          "y_max": 0.7278,
+          "y_min": 0.5139
+        },
+        "class_name": "diaoche",
+        "class_name_cn": "吊车",
+        "confidence": 0.82,
+        "description": "图像中部偏下、建筑左侧工地内的黄色吊装设备，可见黄色工程底盘及向上的桁架/吊臂结构，框住其可见主体与臂架区域。",
+        "missed_index": 1
+      },
+      {
+        "bbox_normalized": {
+          "x_max": 0.3385,
+          "x_min": 0.2917,
+          "y_max": 0.7546,
+          "y_min": 0.4778
+        },
+        "class_name": "diaoche",
+        "class_name_cn": "吊车",
+        "confidence": 0.78,
+        "description": "图像中部偏左工地内的红色竖向桁架臂及底部黄色工程设备，框住红色竖臂和下方可见吊装底盘/结构。",
+        "missed_index": 2
+      },
+      {
+        "bbox_normalized": {
+          "x_max": 0.323,
+          "x_min": 0.2786,
+          "y_max": 0.7222,
+          "y_min": 0.6435
+        },
+        "class_name": "wajueji",
+        "class_name_cn": "挖掘机",
+        "confidence": 0.8,
+        "description": "图像下方偏左工地入口附近的橙色小型挖掘机，可见履带底盘及折臂/铲斗，框住其可见区域。",
+        "missed_index": 3
+      }
+    ],
+    "summary": "基于校验结果修正 1 个误报类别，补充 3 个漏报目标 bbox。 已按 /api/verify 确认的 3 个漏报目标分别输出 bbox；未新增其他目标，未处理 false_positive 纠正。"
+  },
+  "corrected_detections": [
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ],
+      "source": "llm_corrected",
+      "original_class_name": "diaoche",
+      "original_class_id": 4,
+      "class_name_cn": "挖掘机",
+      "correction_confidence": 0.84,
+      "correction_reason": "检测框覆盖的是橙红色履带式挖掘机/长臂挖掘设备，能看到履带底盘和多节挖臂形态，未见吊车典型的柔性钢丝绳、吊钩或支腿，类别标为吊车不正确。"
+    },
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "class_name_cn": "吊车",
+      "confidence": 0.82,
+      "bbox": [
+        636,
+        555,
+        790,
+        786
+      ],
+      "description": "图像中部偏下、建筑左侧工地内的黄色吊装设备，可见黄色工程底盘及向上的桁架/吊臂结构，框住其可见主体与臂架区域。",
+      "source": "llm_added"
+    },
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "class_name_cn": "吊车",
+      "confidence": 0.78,
+      "bbox": [
+        560,
+        516,
+        650,
+        815
+      ],
+      "description": "图像中部偏左工地内的红色竖向桁架臂及底部黄色工程设备，框住红色竖臂和下方可见吊装底盘/结构。",
+      "source": "llm_added"
+    },
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "class_name_cn": "挖掘机",
+      "confidence": 0.8,
+      "bbox": [
+        535,
+        695,
+        620,
+        780
+      ],
+      "description": "图像下方偏左工地入口附近的橙色小型挖掘机，可见履带底盘及折臂/铲斗，框住其可见区域。",
+      "source": "llm_added"
+    }
+  ]
+}

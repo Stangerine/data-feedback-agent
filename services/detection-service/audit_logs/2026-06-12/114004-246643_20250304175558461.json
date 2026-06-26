@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-06-12T11:40:04.246515",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "mimo-v2.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [], \"missed_detections\": [{\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"location\": \"工地左侧靠近河道处\", \"description\": \"一台橙红色长臂挖掘机，臂杆较长，清晰可见\", \"confidence_level\": \"high\"}, {\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"location\": \"工地下方区域\", \"description\": \"一台较小的橙红色挖掘机\", \"confidence_level\": \"high\"}, {\"actual_class\": \"dazhuangji\", \"actual_class_cn\": \"打桩机\", \"location\": \"工地中间位置\", \"description\": \"一台红色高耸塔式打桩机，带有竖直导向架，高度明显\", \"confidence_level\": \"high\"}], \"overall_assessment\": {\"total_detections\": 1, \"false_positive_count\": 0, \"missed_detection_count\": 3, \"detection_quality\": \"poor\", \"summary\": \"仅检测到1台吊车，遗漏了3台明显可见的工程机械：1台长臂挖掘机、1台小型挖掘机和1台打桩机。检测召回率较低，需要改进模型对工地多目标场景的检测能力。\"}}",
+  "result": {
+    "false_positives": [],
+    "missed_detections": [
+      {
+        "actual_class": "wajueji",
+        "actual_class_cn": "挖掘机",
+        "location": "工地左侧靠近河道处",
+        "description": "一台橙红色长臂挖掘机，臂杆较长，清晰可见",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "wajueji",
+        "actual_class_cn": "挖掘机",
+        "location": "工地下方区域",
+        "description": "一台较小的橙红色挖掘机",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "dazhuangji",
+        "actual_class_cn": "打桩机",
+        "location": "工地中间位置",
+        "description": "一台红色高耸塔式打桩机，带有竖直导向架，高度明显",
+        "confidence_level": "high"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 0,
+      "missed_detection_count": 3,
+      "detection_quality": "poor",
+      "summary": "仅检测到1台吊车，遗漏了3台明显可见的工程机械：1台长臂挖掘机、1台小型挖掘机和1台打桩机。检测召回率较低，需要改进模型对工地多目标场景的检测能力。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 21356
+}

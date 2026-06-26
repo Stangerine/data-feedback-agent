@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-06-16T11:45:17.477570",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "mimo-v2.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [], \"missed_detections\": [{\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"location\": \"红色吊车左前方\", \"description\": \"小型红色挖掘机，有明显的挖臂和铲斗特征\", \"confidence_level\": \"high\"}, {\"actual_class\": \"dazhuangji\", \"actual_class_cn\": \"打桩机\", \"location\": \"红色吊车右侧\", \"description\": \"黄色打桩机，有高耸的竖直桅杆\", \"confidence_level\": \"high\"}], \"overall_assessment\": {\"total_detections\": 1, \"false_positive_count\": 0, \"missed_detection_count\": 2, \"detection_quality\": \"fair\", \"summary\": \"检测到1台吊车（类别正确），但漏检了2台明显的目标：1台挖掘机和1台打桩机。\"}}",
+  "result": {
+    "false_positives": [],
+    "missed_detections": [
+      {
+        "actual_class": "wajueji",
+        "actual_class_cn": "挖掘机",
+        "location": "红色吊车左前方",
+        "description": "小型红色挖掘机，有明显的挖臂和铲斗特征",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "dazhuangji",
+        "actual_class_cn": "打桩机",
+        "location": "红色吊车右侧",
+        "description": "黄色打桩机，有高耸的竖直桅杆",
+        "confidence_level": "high"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 0,
+      "missed_detection_count": 2,
+      "detection_quality": "fair",
+      "summary": "检测到1台吊车（类别正确），但漏检了2台明显的目标：1台挖掘机和1台打桩机。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 15030
+}

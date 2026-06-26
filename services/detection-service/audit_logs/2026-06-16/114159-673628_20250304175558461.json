@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-06-16T11:41:59.673534",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "mimo-v2.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"detection_index\": 1, \"reported_class\": \"吊车(diaoche)\", \"actual_class\": \"打桩机(dazhuangji)\", \"reason\": \"检测框内设备为打桩机，具有刚性竖直桅杆，无吊车所需的柔性钢丝绳和吊钩，类别判定错误\"}], \"missed_detections\": [{\"actual_class\": \"dazhuangji\", \"actual_class_cn\": \"打桩机\", \"location\": \"图片中部偏右，红色设备右侧\", \"description\": \"黄色高耸桅杆设备，具有明显的打桩机刚性桅杆特征\", \"confidence_level\": \"high\"}], \"overall_assessment\": {\"total_detections\": 1, \"false_positive_count\": 1, \"missed_detection_count\": 1, \"detection_quality\": \"poor\", \"summary\": \"小模型将工地中的打桩机误报为吊车，同时遗漏了另一台清晰可见的打桩机。检测结果类别错误且存在漏检，整体检测质量差。\"}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "吊车(diaoche)",
+        "actual_class": "打桩机(dazhuangji)",
+        "reason": "检测框内设备为打桩机，具有刚性竖直桅杆，无吊车所需的柔性钢丝绳和吊钩，类别判定错误",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [
+      {
+        "actual_class": "dazhuangji",
+        "actual_class_cn": "打桩机",
+        "location": "图片中部偏右，红色设备右侧",
+        "description": "黄色高耸桅杆设备，具有明显的打桩机刚性桅杆特征",
+        "confidence_level": "high"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 1,
+      "missed_detection_count": 1,
+      "detection_quality": "poor",
+      "summary": "小模型将工地中的打桩机误报为吊车，同时遗漏了另一台清晰可见的打桩机。检测结果类别错误且存在漏检，整体检测质量差。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 32853
+}

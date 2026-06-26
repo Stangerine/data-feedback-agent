@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-06-15T15:58:49.564995",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [], \"missed_detections\": [{\"actual_class\": \"dazhuangji\", \"actual_class_cn\": \"打桩机\", \"confidence_level\": \"medium\", \"description\": \"工地中央偏右有一台黄色桩机/打桩设备，主体和竖向结构清晰可见，未被检测框覆盖。\", \"location\": \"图像中部偏下，约 x650-760、y540-750 区域\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"high\", \"description\": \"工地中部有一台红色塔吊/起重设备，竖向塔身和底部结构清晰可见，未被现有检测框覆盖。\", \"location\": \"图像中部偏左，约 x610-665、y430-820 区域\"}, {\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"confidence_level\": \"medium\", \"description\": \"已检出吊车附近下方有一台橙色挖掘机，车身和作业臂较清晰，未被检测框有效覆盖。\", \"location\": \"图像中部偏左下，约 x470-560、y650-735 区域\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 0, \"missed_detection_count\": 3, \"summary\": \"检测框1覆盖工地内橙红色吊车/起重设备，类别基本正确；但现场仍有多台清晰可见的施工车辆/设备未检出，包括打桩机、另一台吊车以及挖掘机。\", \"total_detections\": 1}}",
+  "result": {
+    "false_positives": [],
+    "missed_detections": [
+      {
+        "actual_class": "dazhuangji",
+        "actual_class_cn": "打桩机",
+        "location": "图像中部偏下，约 x650-760、y540-750 区域",
+        "description": "工地中央偏右有一台黄色桩机/打桩设备，主体和竖向结构清晰可见，未被检测框覆盖。",
+        "confidence_level": "medium"
+      },
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "图像中部偏左，约 x610-665、y430-820 区域",
+        "description": "工地中部有一台红色塔吊/起重设备，竖向塔身和底部结构清晰可见，未被现有检测框覆盖。",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "wajueji",
+        "actual_class_cn": "挖掘机",
+        "location": "图像中部偏左下，约 x470-560、y650-735 区域",
+        "description": "已检出吊车附近下方有一台橙色挖掘机，车身和作业臂较清晰，未被检测框有效覆盖。",
+        "confidence_level": "medium"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 0,
+      "missed_detection_count": 3,
+      "detection_quality": "poor",
+      "summary": "检测框1覆盖工地内橙红色吊车/起重设备，类别基本正确；但现场仍有多台清晰可见的施工车辆/设备未检出，包括打桩机、另一台吊车以及挖掘机。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 24752
+}

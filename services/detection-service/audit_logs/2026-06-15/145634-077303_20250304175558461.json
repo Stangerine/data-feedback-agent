@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-06-15T14:56:34.077007",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [], \"missed_detections\": [{\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"confidence_level\": \"high\", \"description\": \"一台橙色挖掘机，履带底盘和挖臂清晰可见，未被单独检测。\", \"location\": \"画面左中部施工区域，已检吊车框下方偏左，约 x450-545, y635-700\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"high\", \"description\": \"一台黄色吊装设备/吊车，车体和竖直吊臂结构清晰可见，未被检测。\", \"location\": \"画面中部偏左、绿色圆柱罐右下方，约 x680-770, y545-715\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"medium\", \"description\": \"红色竖向塔吊/吊装设备主体清晰可见，未被检测。\", \"location\": \"画面中部偏左施工区域，约 x600-645, y540-790\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"medium\", \"description\": \"下方黄色吊装设备/工程吊车可见，虽部分被遮挡但主体尺寸较大，未被检测。\", \"location\": \"画面下中部靠近大楼边缘，约 x585-670, y725-805\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 0, \"missed_detection_count\": 4, \"summary\": \"已检出的吊车类别与位置基本合理，但施工区域内仍有多台清晰可见的工程车辆/吊装设备未被检测，漏检较多。\", \"total_detections\": 1}}",
+  "result": {
+    "false_positives": [],
+    "missed_detections": [
+      {
+        "actual_class": "wajueji",
+        "actual_class_cn": "挖掘机",
+        "location": "画面左中部施工区域，已检吊车框下方偏左，约 x450-545, y635-700",
+        "description": "一台橙色挖掘机，履带底盘和挖臂清晰可见，未被单独检测。",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面中部偏左、绿色圆柱罐右下方，约 x680-770, y545-715",
+        "description": "一台黄色吊装设备/吊车，车体和竖直吊臂结构清晰可见，未被检测。",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面中部偏左施工区域，约 x600-645, y540-790",
+        "description": "红色竖向塔吊/吊装设备主体清晰可见，未被检测。",
+        "confidence_level": "medium"
+      },
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面下中部靠近大楼边缘，约 x585-670, y725-805",
+        "description": "下方黄色吊装设备/工程吊车可见，虽部分被遮挡但主体尺寸较大，未被检测。",
+        "confidence_level": "medium"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 0,
+      "missed_detection_count": 4,
+      "detection_quality": "poor",
+      "summary": "已检出的吊车类别与位置基本合理，但施工区域内仍有多台清晰可见的工程车辆/吊装设备未被检测，漏检较多。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 25344
+}

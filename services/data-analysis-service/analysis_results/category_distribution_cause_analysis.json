@@ -1,0 +1,844 @@
+{
+  "generated_at": "2026-06-16T15:27:00",
+  "training_dir": "/home/shao/zzq/训练集/vehicle-13631-v18-cls9",
+  "test_error_dir": "/home/shao/zzq/误报/2025-04-01/sample",
+  "basis": "YOLO labels/*.txt; object-level category distribution plus image-level category presence.",
+  "limitation": "No separate prediction/matching file was found in the provided false-positive directory, so this report infers distribution-related error causes from annotated categories in the error sample. Precise FP/FN box-level attribution requires model prediction outputs and GT matching results.",
+  "train_image_count": 12630,
+  "train_object_count": 28154,
+  "test_image_count": 59,
+  "test_object_count": 153,
+  "categories": [
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "class_cn": "挖掘机",
+      "train_objects": 9094,
+      "train_object_pct": 32.3,
+      "test_objects": 93,
+      "test_object_pct": 60.78,
+      "diff_percentage_points": 28.48,
+      "test_train_ratio": 1.88,
+      "train_images_with_class": 7266,
+      "train_image_presence_pct": 57.53,
+      "test_images_with_class": 59,
+      "test_image_presence_pct": 100.0,
+      "attribution_level": "possible_distribution_related",
+      "conclusion": "误报样本占比高于训练集，但训练覆盖并不稀缺，分布差异可能相关但不宜作为唯一主因。",
+      "single_image_train_coverage_risk": "low",
+      "single_image_train_coverage_risk_cn": "低风险",
+      "single_image_conclusion": "训练集中该类别覆盖相对充分；单张图片中若错误涉及该类，不建议归因为类别分布差异，应优先检查混淆、背景、阈值、标注或空间因素。"
+    },
+    {
+      "class_id": 1,
+      "class_name": "chanche",
+      "class_cn": "铲车",
+      "train_objects": 1126,
+      "train_object_pct": 4.0,
+      "test_objects": 0,
+      "test_object_pct": 0.0,
+      "diff_percentage_points": -4.0,
+      "test_train_ratio": 0.0,
+      "train_images_with_class": 954,
+      "train_image_presence_pct": 7.55,
+      "test_images_with_class": 0,
+      "test_image_presence_pct": 0.0,
+      "attribution_level": "not_observed_in_error_sample",
+      "conclusion": "误报样本未出现，不能从当前误报样本判断该类由线上分布差异导致。",
+      "single_image_train_coverage_risk": "medium",
+      "single_image_train_coverage_risk_cn": "中风险",
+      "single_image_conclusion": "训练集中该类别目标占比在 2%-5% 之间，覆盖不算充分；单张图片中若错误涉及该类，可作为可能相关的风险信号，但不能单独定因。"
+    },
+    {
+      "class_id": 2,
+      "class_name": "dazhuangji",
+      "class_cn": "打桩机",
+      "train_objects": 315,
+      "train_object_pct": 1.12,
+      "test_objects": 7,
+      "test_object_pct": 4.58,
+      "diff_percentage_points": 3.46,
+      "test_train_ratio": 4.09,
+      "train_images_with_class": 312,
+      "train_image_presence_pct": 2.47,
+      "test_images_with_class": 7,
+      "test_image_presence_pct": 11.86,
+      "attribution_level": "high_distribution_related",
+      "conclusion": "训练集低覆盖且误报样本显著过度代表，类别分布差异很可能是该类错误的重要原因。",
+      "single_image_train_coverage_risk": "high",
+      "single_image_train_coverage_risk_cn": "高风险",
+      "single_image_conclusion": "训练集中该类别目标占比低于 2%，单张图片中若错误涉及该类，可作为类别覆盖不足的强风险信号。"
+    },
+    {
+      "class_id": 3,
+      "class_name": "yaluji",
+      "class_cn": "压路机",
+      "train_objects": 3872,
+      "train_object_pct": 13.75,
+      "test_objects": 0,
+      "test_object_pct": 0.0,
+      "diff_percentage_points": -13.75,
+      "test_train_ratio": 0.0,
+      "train_images_with_class": 3279,
+      "train_image_presence_pct": 25.96,
+      "test_images_with_class": 0,
+      "test_image_presence_pct": 0.0,
+      "attribution_level": "not_observed_in_error_sample",
+      "conclusion": "误报样本未出现，不能从当前误报样本判断该类由线上分布差异导致。",
+      "single_image_train_coverage_risk": "low",
+      "single_image_train_coverage_risk_cn": "低风险",
+      "single_image_conclusion": "训练集中该类别覆盖相对充分；单张图片中若错误涉及该类，不建议归因为类别分布差异，应优先检查混淆、背景、阈值、标注或空间因素。"
+    },
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "class_cn": "吊车",
+      "train_objects": 1166,
+      "train_object_pct": 4.14,
+      "test_objects": 47,
+      "test_object_pct": 30.72,
+      "diff_percentage_points": 26.58,
+      "test_train_ratio": 7.42,
+      "train_images_with_class": 981,
+      "train_image_presence_pct": 7.77,
+      "test_images_with_class": 45,
+      "test_image_presence_pct": 76.27,
+      "attribution_level": "high_distribution_related",
+      "conclusion": "误报样本显著过度代表，虽然训练集中不是极低覆盖，但线上占比异常高，分布差异很可能相关。",
+      "single_image_train_coverage_risk": "medium",
+      "single_image_train_coverage_risk_cn": "中风险",
+      "single_image_conclusion": "训练集中该类别目标占比在 2%-5% 之间，覆盖不算充分；单张图片中若错误涉及该类，可作为可能相关的风险信号，但不能单独定因。"
+    },
+    {
+      "class_id": 5,
+      "class_name": "gaokongche",
+      "class_cn": "高空车",
+      "train_objects": 267,
+      "train_object_pct": 0.95,
+      "test_objects": 0,
+      "test_object_pct": 0.0,
+      "diff_percentage_points": -0.95,
+      "test_train_ratio": 0.0,
+      "train_images_with_class": 204,
+      "train_image_presence_pct": 1.62,
+      "test_images_with_class": 0,
+      "test_image_presence_pct": 0.0,
+      "attribution_level": "not_observed_in_error_sample",
+      "conclusion": "误报样本未出现，不能从当前误报样本判断该类由线上分布差异导致。",
+      "single_image_train_coverage_risk": "high",
+      "single_image_train_coverage_risk_cn": "高风险",
+      "single_image_conclusion": "训练集中该类别目标占比低于 2%，单张图片中若错误涉及该类，可作为类别覆盖不足的强风险信号。"
+    },
+    {
+      "class_id": 6,
+      "class_name": "youguanche",
+      "class_cn": "油罐车",
+      "train_objects": 125,
+      "train_object_pct": 0.44,
+      "test_objects": 0,
+      "test_object_pct": 0.0,
+      "diff_percentage_points": -0.44,
+      "test_train_ratio": 0.0,
+      "train_images_with_class": 125,
+      "train_image_presence_pct": 0.99,
+      "test_images_with_class": 0,
+      "test_image_presence_pct": 0.0,
+      "attribution_level": "not_observed_in_error_sample",
+      "conclusion": "误报样本未出现，不能从当前误报样本判断该类由线上分布差异导致。",
+      "single_image_train_coverage_risk": "high",
+      "single_image_train_coverage_risk_cn": "高风险",
+      "single_image_conclusion": "训练集中该类别目标占比低于 2%，单张图片中若错误涉及该类，可作为类别覆盖不足的强风险信号。"
+    },
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "class_cn": "运输车",
+      "train_objects": 8673,
+      "train_object_pct": 30.81,
+      "test_objects": 6,
+      "test_object_pct": 3.92,
+      "diff_percentage_points": -26.88,
+      "test_train_ratio": 0.13,
+      "train_images_with_class": 5580,
+      "train_image_presence_pct": 44.18,
+      "test_images_with_class": 6,
+      "test_image_presence_pct": 10.17,
+      "attribution_level": "unlikely_distribution_related",
+      "conclusion": "误报样本占比未高于训练集，类别分布差异不是主要解释。",
+      "single_image_train_coverage_risk": "low",
+      "single_image_train_coverage_risk_cn": "低风险",
+      "single_image_conclusion": "训练集中该类别覆盖相对充分；单张图片中若错误涉及该类，不建议归因为类别分布差异，应优先检查混淆、背景、阈值、标注或空间因素。"
+    },
+    {
+      "class_id": 8,
+      "class_name": "other",
+      "class_cn": "其他",
+      "train_objects": 3516,
+      "train_object_pct": 12.49,
+      "test_objects": 0,
+      "test_object_pct": 0.0,
+      "diff_percentage_points": -12.49,
+      "test_train_ratio": 0.0,
+      "train_images_with_class": 2996,
+      "train_image_presence_pct": 23.72,
+      "test_images_with_class": 0,
+      "test_image_presence_pct": 0.0,
+      "attribution_level": "not_observed_in_error_sample",
+      "conclusion": "误报样本未出现，不能从当前误报样本判断该类由线上分布差异导致。",
+      "single_image_train_coverage_risk": "low",
+      "single_image_train_coverage_risk_cn": "低风险",
+      "single_image_conclusion": "训练集中该类别覆盖相对充分；单张图片中若错误涉及该类，不建议归因为类别分布差异，应优先检查混淆、背景、阈值、标注或空间因素。"
+    }
+  ],
+  "per_image": [
+    {
+      "filename": "20250304175558461.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250307144503908.jpg",
+      "object_count": 4,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1",
+        "yunshuche(运输车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250307155309293.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250307155344492.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250307161132405.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250307200028051.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250307200237814.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):3"
+      ],
+      "train_coverage_risk": "low",
+      "train_coverage_risk_cn": "低风险",
+      "reason": "该图涉及类别在训练集中覆盖相对充足，类别分布不应作为主要归因。"
+    },
+    {
+      "filename": "20250307200935002.jpg",
+      "object_count": 4,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1",
+        "yunshuche(运输车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250308091621192.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250308101243059.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250308101342496.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250309101445392.jpg",
+      "object_count": 5,
+      "classes": [
+        "wajueji(挖掘机):3",
+        "diaoche(吊车):1",
+        "yunshuche(运输车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250309101725564.jpg",
+      "object_count": 5,
+      "classes": [
+        "wajueji(挖掘机):3",
+        "diaoche(吊车):1",
+        "yunshuche(运输车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250309101912046.jpg",
+      "object_count": 5,
+      "classes": [
+        "wajueji(挖掘机):3",
+        "diaoche(吊车):1",
+        "yunshuche(运输车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311140729961.jpg",
+      "object_count": 4,
+      "classes": [
+        "wajueji(挖掘机):3",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311140741079.jpg",
+      "object_count": 4,
+      "classes": [
+        "wajueji(挖掘机):3",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311140836442.jpg",
+      "object_count": 4,
+      "classes": [
+        "wajueji(挖掘机):3",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311140911964.jpg",
+      "object_count": 4,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):2"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311140924125.jpg",
+      "object_count": 4,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):2"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311141042033.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311141111805.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311141522198.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311141625963.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311171155689.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311171619743.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311172444160.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311172640541.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311173249617.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311173639273.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311174615993.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311174627032.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311174802484.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311175457837.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311175603358.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311175934481.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311200819775.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311200845544.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311201406902.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311201712256.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311202202183.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311202246517.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311203044672.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311205908590.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311210115553.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311210140837.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250311211005385.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "diaoche(吊车):1"
+      ],
+      "train_coverage_risk": "medium",
+      "train_coverage_risk_cn": "中风险",
+      "reason": "该图涉及训练覆盖偏低类别: diaoche(吊车) 训练占比 4.14%"
+    },
+    {
+      "filename": "20250313113730400.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "dazhuangji(打桩机):1"
+      ],
+      "train_coverage_risk": "high",
+      "train_coverage_risk_cn": "高风险",
+      "reason": "该图涉及训练低覆盖类别: dazhuangji(打桩机) 训练占比 1.12%"
+    },
+    {
+      "filename": "20250313115511993.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "dazhuangji(打桩机):1"
+      ],
+      "train_coverage_risk": "high",
+      "train_coverage_risk_cn": "高风险",
+      "reason": "该图涉及训练低覆盖类别: dazhuangji(打桩机) 训练占比 1.12%"
+    },
+    {
+      "filename": "20250313122145887.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "dazhuangji(打桩机):1"
+      ],
+      "train_coverage_risk": "high",
+      "train_coverage_risk_cn": "高风险",
+      "reason": "该图涉及训练低覆盖类别: dazhuangji(打桩机) 训练占比 1.12%"
+    },
+    {
+      "filename": "20250313124147925.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "dazhuangji(打桩机):1"
+      ],
+      "train_coverage_risk": "high",
+      "train_coverage_risk_cn": "高风险",
+      "reason": "该图涉及训练低覆盖类别: dazhuangji(打桩机) 训练占比 1.12%"
+    },
+    {
+      "filename": "20250313125148959.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "dazhuangji(打桩机):1"
+      ],
+      "train_coverage_risk": "high",
+      "train_coverage_risk_cn": "高风险",
+      "reason": "该图涉及训练低覆盖类别: dazhuangji(打桩机) 训练占比 1.12%"
+    },
+    {
+      "filename": "20250313130858646.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "dazhuangji(打桩机):1"
+      ],
+      "train_coverage_risk": "high",
+      "train_coverage_risk_cn": "高风险",
+      "reason": "该图涉及训练低覆盖类别: dazhuangji(打桩机) 训练占比 1.12%"
+    },
+    {
+      "filename": "20250313135338525.jpg",
+      "object_count": 2,
+      "classes": [
+        "wajueji(挖掘机):1",
+        "dazhuangji(打桩机):1"
+      ],
+      "train_coverage_risk": "high",
+      "train_coverage_risk_cn": "高风险",
+      "reason": "该图涉及训练低覆盖类别: dazhuangji(打桩机) 训练占比 1.12%"
+    },
+    {
+      "filename": "20250317143433695.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):3"
+      ],
+      "train_coverage_risk": "low",
+      "train_coverage_risk_cn": "低风险",
+      "reason": "该图涉及类别在训练集中覆盖相对充足，类别分布不应作为主要归因。"
+    },
+    {
+      "filename": "20250317171227401.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):3"
+      ],
+      "train_coverage_risk": "low",
+      "train_coverage_risk_cn": "低风险",
+      "reason": "该图涉及类别在训练集中覆盖相对充足，类别分布不应作为主要归因。"
+    },
+    {
+      "filename": "20250317173104279.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):3"
+      ],
+      "train_coverage_risk": "low",
+      "train_coverage_risk_cn": "低风险",
+      "reason": "该图涉及类别在训练集中覆盖相对充足，类别分布不应作为主要归因。"
+    },
+    {
+      "filename": "20250318092451722.jpg",
+      "object_count": 3,
+      "classes": [
+        "wajueji(挖掘机):2",
+        "yunshuche(运输车):1"
+      ],
+      "train_coverage_risk": "low",
+      "train_coverage_risk_cn": "低风险",
+      "reason": "该图涉及类别在训练集中覆盖相对充足，类别分布不应作为主要归因。"
+    },
+    {
+      "filename": "20250320100300630.jpg",
+      "object_count": 1,
+      "classes": [
+        "wajueji(挖掘机):1"
+      ],
+      "train_coverage_risk": "low",
+      "train_coverage_risk_cn": "低风险",
+      "reason": "该图涉及类别在训练集中覆盖相对充足，类别分布不应作为主要归因。"
+    },
+    {
+      "filename": "20250320102445404.jpg",
+      "object_count": 1,
+      "classes": [
+        "wajueji(挖掘机):1"
+      ],
+      "train_coverage_risk": "low",
+      "train_coverage_risk_cn": "低风险",
+      "reason": "该图涉及类别在训练集中覆盖相对充足，类别分布不应作为主要归因。"
+    }
+  ],
+  "method_revision": "single_image_attribution_uses_training_coverage_only; batch error distribution is background, not direct single-image cause."
+}

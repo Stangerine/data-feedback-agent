@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-06-16T14:21:27.424031",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "failed",
+  "raw_text": "",
+  "result": null,
+  "success": false,
+  "error": "API 调用失败: 500 Server Error: Internal Server Error for url: http://192.168.99.175:3001/v1/chat/completions",
+  "attempts": 2,
+  "duration_ms": 49377
+}

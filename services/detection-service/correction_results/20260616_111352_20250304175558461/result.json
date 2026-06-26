@@ -1,0 +1,151 @@
+{
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "small_model_detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "verification": {
+    "success": true,
+    "data": {
+      "false_positives": [
+        {
+          "detection_index": 1,
+          "reported_class": "diaoche",
+          "actual_class": "wajueji",
+          "reason": "检测框覆盖的是左侧施工区域内一台橙色挖掘机/长臂挖掘设备，可见履带底盘和刚性多节挖臂特征，未见吊车判定所需的柔性钢丝绳和吊钩，类别标为吊车不正确。",
+          "bbox": []
+        }
+      ],
+      "missed_detections": [
+        {
+          "actual_class": "dazhuangji",
+          "actual_class_cn": "打桩机",
+          "location": "施工区域中部偏左，靠近黑色建筑左侧边缘、绿色围挡内",
+          "description": "画面中部偏左、建筑外侧有一台黄色桩工/钻机设备，主体和竖直桅杆较清晰，未被任何检测框覆盖。",
+          "confidence_level": "medium"
+        },
+        {
+          "actual_class": "wajueji",
+          "actual_class_cn": "挖掘机",
+          "location": "画面下方偏左，绿色围挡内靠近泥地和临时道路处",
+          "description": "施工区域下方偏左还有一台小型橙色挖掘机，能看到车身和挖臂轮廓，尺寸超过小目标阈值，未被检测框覆盖。",
+          "confidence_level": "medium"
+        }
+      ],
+      "overall_assessment": {
+        "total_detections": 1,
+        "false_positive_count": 1,
+        "missed_detection_count": 2,
+        "detection_quality": "poor",
+        "summary": "唯一检测框覆盖了真实工程机械，但将挖掘机误判为吊车；此外施工区域内仍有未覆盖的桩工设备和小型挖掘机。远处道路普通车辆及部分杆件/吊臂结构不作为工地车辆漏报统计。"
+      }
+    },
+    "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"detection_index\": 1, \"reason\": \"检测框覆盖的是左侧施工区域内一台橙色挖掘机/长臂挖掘设备，可见履带底盘和刚性多节挖臂特征，未见吊车判定所需的柔性钢丝绳和吊钩，类别标为吊车不正确。\", \"reported_class\": \"diaoche\"}], \"missed_detections\": [{\"actual_class\": \"dazhuangji\", \"actual_class_cn\": \"打桩机\", \"confidence_level\": \"medium\", \"description\": \"画面中部偏左、建筑外侧有一台黄色桩工/钻机设备，主体和竖直桅杆较清晰，未被任何检测框覆盖。\", \"location\": \"施工区域中部偏左，靠近黑色建筑左侧边缘、绿色围挡内\"}, {\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"confidence_level\": \"medium\", \"description\": \"施工区域下方偏左还有一台小型橙色挖掘机，能看到车身和挖臂轮廓，尺寸超过小目标阈值，未被检测框覆盖。\", \"location\": \"画面下方偏左，绿色围挡内靠近泥地和临时道路处\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 1, \"missed_detection_count\": 2, \"summary\": \"唯一检测框覆盖了真实工程机械，但将挖掘机误判为吊车；此外施工区域内仍有未覆盖的桩工设备和小型挖掘机。远处道路普通车辆及部分杆件/吊臂结构不作为工地车辆漏报统计。\", \"total_detections\": 1}}",
+    "error": null,
+    "duration_ms": 84779,
+    "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+    "image_size": {
+      "width": 1920,
+      "height": 1080
+    },
+    "detection_count": 1,
+    "attempts": 2
+  },
+  "correction": {
+    "false_positive_corrections": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "corrected_class": "wajueji",
+        "corrected_class_cn": "挖掘机",
+        "confidence": 0.8,
+        "reason": "检测框覆盖的是左侧施工区域内一台橙色挖掘机/长臂挖掘设备，可见履带底盘和刚性多节挖臂特征，未见吊车判定所需的柔性钢丝绳和吊钩，类别标为吊车不正确。"
+      }
+    ],
+    "missed_detection_corrections": [
+      {
+        "bbox_normalized": {
+          "x_max": 0.401,
+          "x_min": 0.347,
+          "y_max": 0.679,
+          "y_min": 0.516
+        },
+        "class_name": "dazhuangji",
+        "class_name_cn": "打桩机",
+        "confidence": 0.67,
+        "description": "施工区域中部偏左、黑色建筑左侧边缘外的黄色桩工设备，可见黄色底盘/主体及向上竖直桅杆，位于绿色围挡内且未与已有检测框重叠。",
+        "missed_index": 1
+      },
+      {
+        "bbox_normalized": {
+          "x_max": 0.25,
+          "x_min": 0.201,
+          "y_max": 0.735,
+          "y_min": 0.667
+        },
+        "class_name": "wajueji",
+        "class_name_cn": "挖掘机",
+        "confidence": 0.62,
+        "description": "画面下方偏左绿色围挡内、泥地与临时道路交界附近的小型橙色挖掘机，可见橙色车身和短挖臂轮廓，避开已有左侧大挖掘机检测框。",
+        "missed_index": 2
+      }
+    ],
+    "summary": "基于校验结果修正 1 个误报类别，补充 2 个漏报目标 bbox。 已按校验结果仅为 2 个确认漏报目标补充 bbox：中部偏左黄色打桩机和下方偏左小型橙色挖掘机；未新增其他目标，未处理 false_positive。"
+  },
+  "corrected_detections": [
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ],
+      "source": "llm_corrected",
+      "original_class_name": "diaoche",
+      "original_class_id": 4,
+      "class_name_cn": "挖掘机",
+      "correction_confidence": 0.8,
+      "correction_reason": "检测框覆盖的是左侧施工区域内一台橙色挖掘机/长臂挖掘设备，可见履带底盘和刚性多节挖臂特征，未见吊车判定所需的柔性钢丝绳和吊钩，类别标为吊车不正确。"
+    },
+    {
+      "class_id": 2,
+      "class_name": "dazhuangji",
+      "class_name_cn": "打桩机",
+      "confidence": 0.67,
+      "bbox": [
+        666,
+        557,
+        770,
+        733
+      ],
+      "description": "施工区域中部偏左、黑色建筑左侧边缘外的黄色桩工设备，可见黄色底盘/主体及向上竖直桅杆，位于绿色围挡内且未与已有检测框重叠。",
+      "source": "llm_added"
+    },
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "class_name_cn": "挖掘机",
+      "confidence": 0.62,
+      "bbox": [
+        386,
+        720,
+        480,
+        794
+      ],
+      "description": "画面下方偏左绿色围挡内、泥地与临时道路交界附近的小型橙色挖掘机，可见橙色车身和短挖臂轮廓，避开已有左侧大挖掘机检测框。",
+      "source": "llm_added"
+    }
+  ]
+}

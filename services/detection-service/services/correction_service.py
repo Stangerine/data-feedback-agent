@@ -250,13 +250,11 @@ class CorrectionService:
         self.output_dir = Path(output_dir)
         self.llm = llm_client
         if self.llm is None:
-            protocol = cfg.llm.protocol
-            provider_cfg = getattr(cfg.llm, protocol)
             self.llm = create_llm_client(
-                protocol=protocol,
-                model=provider_cfg.model,
-                api_url=provider_cfg.api_url,
-                api_key=provider_cfg.api_key,
+                protocol=cfg.llm.protocol,
+                model=cfg.llm.model,
+                api_url=cfg.llm.api_url,
+                api_key=cfg.llm.api_key,
                 timeout=cfg.llm.timeout,
                 temperature=cfg.llm.temperature,
             )

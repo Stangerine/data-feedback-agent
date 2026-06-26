@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-06-16T10:49:26.810755",
+  "image_path": "/home/shao/zzq/训练集/vehicle-13631-v18-cls9/images/00004.jpg",
+  "image_size": {
+    "width": 500,
+    "height": 500
+  },
+  "detections": [
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "class_name_cn": "",
+      "confidence": 0.92,
+      "bbox": [
+        100.0,
+        100.0,
+        400.0,
+        400.0
+      ]
+    },
+    {
+      "class_id": 2,
+      "class_name": "dazhuangji",
+      "class_name_cn": "",
+      "confidence": 0.78,
+      "bbox": [
+        50.0,
+        50.0,
+        200.0,
+        200.0
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"youguanche\", \"detection_index\": 1, \"reason\": \"检测框覆盖的是带圆柱形罐体的洒水/罐式车辆，核心特征为罐体和卡车底盘，没有挖掘机的履带/轮式作业底盘、关节挖臂和铲斗，类别明显错误。\", \"reported_class\": \"wajueji\"}, {\"actual_class\": \"other\", \"detection_index\": 2, \"reason\": \"检测框主要覆盖车辆上方的喷雾炮/局部设备及背景结构，不具备打桩机高耸近垂直桅杆、导向架和桩工设备等核心特征，类别明显错误。\", \"reported_class\": \"dazhuangji\"}], \"missed_detections\": [], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 2, \"missed_detection_count\": 0, \"summary\": \"图中清晰主体是一辆带圆柱形罐体的罐式洒水/喷雾车辆，应归为油罐车/罐车类特征；两个检测结果均类别错误。主车已有检测框覆盖，按互斥规则不再记录漏报；左侧小轿车不属于工地车辆检测类别，远处/局部结构也不作为漏报。\", \"total_detections\": 2}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "wajueji",
+        "actual_class": "youguanche",
+        "reason": "检测框覆盖的是带圆柱形罐体的洒水/罐式车辆，核心特征为罐体和卡车底盘，没有挖掘机的履带/轮式作业底盘、关节挖臂和铲斗，类别明显错误。",
+        "bbox": []
+      },
+      {
+        "detection_index": 2,
+        "reported_class": "dazhuangji",
+        "actual_class": "other",
+        "reason": "检测框主要覆盖车辆上方的喷雾炮/局部设备及背景结构，不具备打桩机高耸近垂直桅杆、导向架和桩工设备等核心特征，类别明显错误。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [],
+    "overall_assessment": {
+      "total_detections": 2,
+      "false_positive_count": 2,
+      "missed_detection_count": 0,
+      "detection_quality": "poor",
+      "summary": "图中清晰主体是一辆带圆柱形罐体的罐式洒水/喷雾车辆，应归为油罐车/罐车类特征；两个检测结果均类别错误。主车已有检测框覆盖，按互斥规则不再记录漏报；左侧小轿车不属于工地车辆检测类别，远处/局部结构也不作为漏报。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 11510
+}

@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-06-16T11:15:41.356716",
+  "image_path": "/home/shao/zzq/正确/00022.jpg",
+  "image_size": {
+    "width": 350,
+    "height": 262
+  },
+  "detections": [
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.9534500241279602,
+      "bbox": [
+        67.06732177734375,
+        5.01324462890625,
+        317.7508850097656,
+        244.11915588378906
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"other\", \"detection_index\": 1, \"reason\": \"检测框覆盖的是混凝土搅拌车，车身后部为大型旋转搅拌筒，不是开放式货斗、密封货厢或自卸翻斗等运输车核心结构；该专用工程车辆应归为 other。\", \"reported_class\": \"yunshuche\"}], \"missed_detections\": [], \"overall_assessment\": {\"detection_quality\": \"fair\", \"false_positive_count\": 1, \"missed_detection_count\": 0, \"summary\": \"图中主要目标为一辆混凝土搅拌车，检测框位置基本覆盖车辆主体，但类别误判为运输车。未发现其他清晰、尺寸足够且完全未被检测框覆盖的车辆目标。\", \"total_detections\": 1}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "yunshuche",
+        "actual_class": "other",
+        "reason": "检测框覆盖的是混凝土搅拌车，车身后部为大型旋转搅拌筒，不是开放式货斗、密封货厢或自卸翻斗等运输车核心结构；该专用工程车辆应归为 other。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 1,
+      "missed_detection_count": 0,
+      "detection_quality": "fair",
+      "summary": "图中主要目标为一辆混凝土搅拌车，检测框位置基本覆盖车辆主体，但类别误判为运输车。未发现其他清晰、尺寸足够且完全未被检测框覆盖的车辆目标。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 7214
+}

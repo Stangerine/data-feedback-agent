@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-06-16T13:57:39.573321",
+  "image_path": "/home/shao/zzq/正确/00022.jpg",
+  "image_size": {
+    "width": 350,
+    "height": 262
+  },
+  "detections": [
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.9534500241279602,
+      "bbox": [
+        67.06732177734375,
+        5.01324462890625,
+        317.7508850097656,
+        244.11915588378906
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"other\", \"confidence\": 0.9, \"detection_index\": 1, \"reason\": \"检测框覆盖的是混凝土搅拌车，后部有明显大型旋转搅拌罐，属于未列入专用类别的工程车辆，应归为 other；不是普通开放货斗/货厢/自卸斗运输车。\", \"reported_class\": \"yunshuche\"}], \"missed_detections\": [], \"overall_assessment\": {\"detection_quality\": \"fair\", \"false_positive_count\": 1, \"missed_detection_count\": 0, \"summary\": \"主目标被框住但类别错误：图中为混凝土搅拌车，应判为 other 而非运输车。右侧背景有部分红色车辆/结构被遮挡且不完整，不作为漏报。\", \"total_detections\": 1}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "yunshuche",
+        "actual_class": "other",
+        "confidence": 0.9,
+        "reason": "检测框覆盖的是混凝土搅拌车，后部有明显大型旋转搅拌罐，属于未列入专用类别的工程车辆，应归为 other；不是普通开放货斗/货厢/自卸斗运输车。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 1,
+      "missed_detection_count": 0,
+      "detection_quality": "fair",
+      "summary": "主目标被框住但类别错误：图中为混凝土搅拌车，应判为 other 而非运输车。右侧背景有部分红色车辆/结构被遮挡且不完整，不作为漏报。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 8611
+}

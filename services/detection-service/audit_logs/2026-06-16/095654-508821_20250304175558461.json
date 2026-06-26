@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-06-16T09:56:54.508488",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"detection_index\": 1, \"reason\": \"检测框覆盖的是橙色挖掘机/挖机类设备，可见履带/车身与关节式挖臂，未见吊车应有的起重机车身、支腿底座和吊钩组合；类别标为吊车明显不符。\", \"reported_class\": \"diaoche\"}], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"high\", \"description\": \"画面中部偏下有一台黄色塔式/起重设备，黄色底座和竖向/起重结构清晰，未被现有检测框覆盖。\", \"location\": \"图像中部偏下，建筑左侧工地内，约在 x650-y560 至 x760-y740 区域\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"medium\", \"description\": \"工地中部偏左有红色竖向桁架式起重/吊装设备，底部设备和高耸桁架较明显，未被检测框覆盖；虽有遮挡但主体尺寸足够。\", \"location\": \"图像中部偏左，绿色圆柱罐体前方至下方，约在 x580-y430 至 x660-y790 区域\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 1, \"missed_detection_count\": 2, \"summary\": \"现有唯一检测框类别错误，将挖掘机类设备误判为吊车。画面中仍有清晰的黄色起重设备和红色桁架式起重设备未检出；远处道路车辆和局部杆件/小型疑似设备未按漏报计入。\", \"total_detections\": 1}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "actual_class": "wajueji",
+        "reason": "检测框覆盖的是橙色挖掘机/挖机类设备，可见履带/车身与关节式挖臂，未见吊车应有的起重机车身、支腿底座和吊钩组合；类别标为吊车明显不符。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "图像中部偏下，建筑左侧工地内，约在 x650-y560 至 x760-y740 区域",
+        "description": "画面中部偏下有一台黄色塔式/起重设备，黄色底座和竖向/起重结构清晰，未被现有检测框覆盖。",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "图像中部偏左，绿色圆柱罐体前方至下方，约在 x580-y430 至 x660-y790 区域",
+        "description": "工地中部偏左有红色竖向桁架式起重/吊装设备，底部设备和高耸桁架较明显，未被检测框覆盖；虽有遮挡但主体尺寸足够。",
+        "confidence_level": "medium"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 1,
+      "missed_detection_count": 2,
+      "detection_quality": "poor",
+      "summary": "现有唯一检测框类别错误，将挖掘机类设备误判为吊车。画面中仍有清晰的黄色起重设备和红色桁架式起重设备未检出；远处道路车辆和局部杆件/小型疑似设备未按漏报计入。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 21577
+}

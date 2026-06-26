@@ -1,0 +1,958 @@
+{
+  "training_dir": "/home/shao/zzq/训练集_500",
+  "test_dir": "/home/shao/zzq/误报/2025-04-01/sample",
+  "train_image_count": 500,
+  "test_image_count": 59,
+  "class_analysis": {
+    "train_class_map": {
+      "0": 346,
+      "1": 43,
+      "2": 16,
+      "3": 156,
+      "4": 47,
+      "5": 4,
+      "6": 5,
+      "7": 379,
+      "8": 127
+    },
+    "test_class_map": {
+      "0": 93,
+      "2": 7,
+      "4": 47,
+      "7": 6
+    },
+    "coverage_gaps": [
+      {
+        "class_id": 2,
+        "class_name": "dazhuangji",
+        "train_pct": 1.42
+      },
+      {
+        "class_id": 5,
+        "class_name": "gaokongche",
+        "train_pct": 0.36
+      },
+      {
+        "class_id": 6,
+        "class_name": "youguanche",
+        "train_pct": 0.45
+      }
+    ],
+    "overrepresented_in_test": [
+      {
+        "class_id": 0,
+        "class_name": "wajueji",
+        "test_pct": 60.78,
+        "train_pct": 30.81,
+        "ratio": 1.97
+      },
+      {
+        "class_id": 2,
+        "class_name": "dazhuangji",
+        "test_pct": 4.58,
+        "train_pct": 1.42,
+        "ratio": 3.21
+      },
+      {
+        "class_id": 4,
+        "class_name": "diaoche",
+        "test_pct": 30.72,
+        "train_pct": 4.19,
+        "ratio": 7.34
+      }
+    ]
+  },
+  "embedding_analysis": {
+    "train_embedding_shape": [
+      500,
+      1024
+    ],
+    "test_embedding_shape": [
+      59,
+      1024
+    ],
+    "mean_ood_score": 0.0004,
+    "high_ood_count": 0
+  },
+  "quality_analysis": {
+    "train_mean": 3.2223,
+    "train_std": 1.195,
+    "test_mean": 2.0039,
+    "test_std": 0.5565,
+    "mean_diff": -1.2185,
+    "train_scene_dist": {
+      "cityscape": 296,
+      "still_life": 113,
+      "landscape": 30,
+      "night": 20,
+      "others": 15,
+      "human": 14,
+      "plant": 10,
+      "indoor": 2
+    },
+    "test_scene_dist": {
+      "human": 21,
+      "still_life": 18,
+      "landscape": 8,
+      "night": 4,
+      "cityscape": 3,
+      "others": 3,
+      "animal": 1,
+      "plant": 1
+    },
+    "train_distortion_dist": {
+      "other": 241,
+      "jpeg compression": 82,
+      "noise": 55,
+      "blur": 48,
+      "jpeg2000 compression": 36,
+      "overexposure": 28,
+      "color": 5,
+      "contrast": 5
+    },
+    "test_distortion_dist": {
+      "blur": 19,
+      "noise": 12,
+      "other": 12,
+      "jpeg compression": 11,
+      "jpeg2000 compression": 4,
+      "spatial": 1
+    }
+  },
+  "spatial_analysis": {
+    "mean_bbox_count": 2.59,
+    "mean_small_target_ratio": 0.0288
+  },
+  "llm_attribution": {
+    "其他": 28,
+    "类间混淆": 19,
+    "环境因素": 7,
+    "背景干扰": 3,
+    "标注错误": 2
+  },
+  "feedback_scores": [
+    {
+      "filename": "20250304175558461.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2717,
+        "quality_score": 0.1336,
+        "spatial_score": 0.3,
+        "llm_score": 0.78
+      },
+      "weighted_score": 0.4072,
+      "level": "medium_value",
+      "reason": "图片质量偏低；LLM归因: 环境因素"
+    },
+    {
+      "filename": "20250313130858646.jpg",
+      "dimensions": {
+        "class_score": 0.503,
+        "embedding_score": 0.272,
+        "quality_score": 0.6352,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3776,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250313125148959.jpg",
+      "dimensions": {
+        "class_score": 0.503,
+        "embedding_score": 0.2717,
+        "quality_score": 0.5191,
+        "spatial_score": 0.0,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.3729,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311174615993.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.27,
+        "quality_score": 0.1599,
+        "spatial_score": 0.0,
+        "llm_score": 0.82
+      },
+      "weighted_score": 0.3716,
+      "level": "medium_value",
+      "reason": "图片质量偏低；LLM归因: 环境因素"
+    },
+    {
+      "filename": "20250311172444160.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.27,
+        "quality_score": 0.3897,
+        "spatial_score": 0.0,
+        "llm_score": 0.58
+      },
+      "weighted_score": 0.3701,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311173639273.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2703,
+        "quality_score": 0.1084,
+        "spatial_score": 0.0,
+        "llm_score": 0.84
+      },
+      "weighted_score": 0.367,
+      "level": "medium_value",
+      "reason": "图片质量偏低；LLM归因: 环境因素"
+    },
+    {
+      "filename": "20250313115511993.jpg",
+      "dimensions": {
+        "class_score": 0.503,
+        "embedding_score": 0.2714,
+        "quality_score": 0.4766,
+        "spatial_score": 0.0,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.3664,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311211005385.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2701,
+        "quality_score": 0.1043,
+        "spatial_score": 0.0,
+        "llm_score": 0.84
+      },
+      "weighted_score": 0.3663,
+      "level": "medium_value",
+      "reason": "图片质量偏低；LLM归因: 环境因素"
+    },
+    {
+      "filename": "20250311174802484.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2701,
+        "quality_score": 0.2954,
+        "spatial_score": 0.0,
+        "llm_score": 0.64
+      },
+      "weighted_score": 0.365,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311171155689.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2702,
+        "quality_score": 0.2265,
+        "spatial_score": 0.2,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3637,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250308101243059.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.2695,
+        "quality_score": 0.4287,
+        "spatial_score": 0.0,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.362,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311203044672.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2715,
+        "quality_score": 0.0725,
+        "spatial_score": 0.0,
+        "llm_score": 0.82
+      },
+      "weighted_score": 0.3589,
+      "level": "medium_value",
+      "reason": "图片质量偏低；LLM归因: 环境因素"
+    },
+    {
+      "filename": "20250308091621192.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.2695,
+        "quality_score": 0.4062,
+        "spatial_score": 0.0,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.3586,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250313113730400.jpg",
+      "dimensions": {
+        "class_score": 0.503,
+        "embedding_score": 0.2717,
+        "quality_score": 0.4375,
+        "spatial_score": 0.0,
+        "llm_score": 0.57
+      },
+      "weighted_score": 0.3584,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250308101342496.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.2695,
+        "quality_score": 0.418,
+        "spatial_score": 0.0,
+        "llm_score": 0.57
+      },
+      "weighted_score": 0.3581,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250313135338525.jpg",
+      "dimensions": {
+        "class_score": 0.503,
+        "embedding_score": 0.2713,
+        "quality_score": 0.419,
+        "spatial_score": 0.0,
+        "llm_score": 0.57
+      },
+      "weighted_score": 0.3555,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250317173104279.jpg",
+      "dimensions": {
+        "class_score": 0.4,
+        "embedding_score": 0.2704,
+        "quality_score": 0.2817,
+        "spatial_score": 0.2667,
+        "llm_score": 0.58
+      },
+      "weighted_score": 0.3504,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250313122145887.jpg",
+      "dimensions": {
+        "class_score": 0.503,
+        "embedding_score": 0.2718,
+        "quality_score": 0.3682,
+        "spatial_score": 0.0,
+        "llm_score": 0.58
+      },
+      "weighted_score": 0.3495,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311172640541.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.27,
+        "quality_score": 0.355,
+        "spatial_score": 0.2,
+        "llm_score": 0.276
+      },
+      "weighted_score": 0.3493,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250307155344492.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.2695,
+        "quality_score": 0.3266,
+        "spatial_score": 0.0,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.3467,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250317171227401.jpg",
+      "dimensions": {
+        "class_score": 0.4,
+        "embedding_score": 0.2705,
+        "quality_score": 0.2446,
+        "spatial_score": 0.2667,
+        "llm_score": 0.58
+      },
+      "weighted_score": 0.3448,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250307200935002.jpg",
+      "dimensions": {
+        "class_score": 0.4068,
+        "embedding_score": 0.2709,
+        "quality_score": 0.1987,
+        "spatial_score": 0.0,
+        "llm_score": 0.86
+      },
+      "weighted_score": 0.3418,
+      "level": "medium_value",
+      "reason": "图片质量偏低；LLM归因: 环境因素"
+    },
+    {
+      "filename": "20250311140911964.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2699,
+        "quality_score": 0.1592,
+        "spatial_score": 0.1,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3385,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311205908590.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.27,
+        "quality_score": 0.1777,
+        "spatial_score": 0.0,
+        "llm_score": 0.58
+      },
+      "weighted_score": 0.3383,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311174627032.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.27,
+        "quality_score": 0.2498,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3371,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311210140837.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2703,
+        "quality_score": 0.134,
+        "spatial_score": 0.0,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.3326,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250317143433695.jpg",
+      "dimensions": {
+        "class_score": 0.4,
+        "embedding_score": 0.2707,
+        "quality_score": 0.188,
+        "spatial_score": 0.2,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.3272,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250307161132405.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.2696,
+        "quality_score": 0.3882,
+        "spatial_score": 0.2,
+        "llm_score": 0.185
+      },
+      "weighted_score": 0.3259,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311201406902.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2704,
+        "quality_score": 0.1724,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3256,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311141625963.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2702,
+        "quality_score": 0.0867,
+        "spatial_score": 0.0,
+        "llm_score": 0.58
+      },
+      "weighted_score": 0.3247,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250307155309293.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.2696,
+        "quality_score": 0.2578,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3236,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250307144503908.jpg",
+      "dimensions": {
+        "class_score": 0.4068,
+        "embedding_score": 0.2695,
+        "quality_score": 0.4355,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3229,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311202202183.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2704,
+        "quality_score": 0.1436,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3213,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311141522198.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2701,
+        "quality_score": 0.1416,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3209,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311140836442.jpg",
+      "dimensions": {
+        "class_score": 0.4872,
+        "embedding_score": 0.2699,
+        "quality_score": 0.2734,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3188,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311171619743.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2702,
+        "quality_score": 0.2578,
+        "spatial_score": 0.2,
+        "llm_score": 0.1675
+      },
+      "weighted_score": 0.3185,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250309101445392.jpg",
+      "dimensions": {
+        "class_score": 0.4055,
+        "embedding_score": 0.2693,
+        "quality_score": 0.3843,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3148,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311175457837.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.27,
+        "quality_score": 0.4019,
+        "spatial_score": 0.0,
+        "llm_score": 0.185
+      },
+      "weighted_score": 0.3127,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311200819775.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2709,
+        "quality_score": 0.4326,
+        "spatial_score": 0.0,
+        "llm_score": 0.15
+      },
+      "weighted_score": 0.3123,
+      "level": "medium_value",
+      "reason": "建议人工复核"
+    },
+    {
+      "filename": "20250311201712256.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2701,
+        "quality_score": 0.0784,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3114,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311175934481.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.27,
+        "quality_score": 0.2798,
+        "spatial_score": 0.0,
+        "llm_score": 0.297
+      },
+      "weighted_score": 0.3111,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250309101912046.jpg",
+      "dimensions": {
+        "class_score": 0.4055,
+        "embedding_score": 0.2694,
+        "quality_score": 0.2715,
+        "spatial_score": 0.0,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.3107,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311173249617.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2702,
+        "quality_score": 0.0732,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.3107,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250320100300630.jpg",
+      "dimensions": {
+        "class_score": 0.4,
+        "embedding_score": 0.2717,
+        "quality_score": 0.0256,
+        "spatial_score": 0.0,
+        "llm_score": 0.82
+      },
+      "weighted_score": 0.3084,
+      "level": "medium_value",
+      "reason": "图片质量偏低；LLM归因: 环境因素"
+    },
+    {
+      "filename": "20250318092451722.jpg",
+      "dimensions": {
+        "class_score": 0.2928,
+        "embedding_score": 0.2706,
+        "quality_score": 0.2414,
+        "spatial_score": 0.2,
+        "llm_score": 0.585
+      },
+      "weighted_score": 0.3083,
+      "level": "medium_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311175603358.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.27,
+        "quality_score": 0.3628,
+        "spatial_score": 0.0,
+        "llm_score": 0.16
+      },
+      "weighted_score": 0.303,
+      "level": "medium_value",
+      "reason": "标注可能有误"
+    },
+    {
+      "filename": "20250311140924125.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2698,
+        "quality_score": 0.2227,
+        "spatial_score": 0.1,
+        "llm_score": 0.1675
+      },
+      "weighted_score": 0.2981,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250320102445404.jpg",
+      "dimensions": {
+        "class_score": 0.4,
+        "embedding_score": 0.2713,
+        "quality_score": 0.0352,
+        "spatial_score": 0.0,
+        "llm_score": 0.68
+      },
+      "weighted_score": 0.2887,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250313124147925.jpg",
+      "dimensions": {
+        "class_score": 0.503,
+        "embedding_score": 0.2717,
+        "quality_score": 0.3364,
+        "spatial_score": 0.0,
+        "llm_score": 0.16
+      },
+      "weighted_score": 0.2817,
+      "level": "low_value",
+      "reason": "标注可能有误"
+    },
+    {
+      "filename": "20250311140741079.jpg",
+      "dimensions": {
+        "class_score": 0.4872,
+        "embedding_score": 0.2699,
+        "quality_score": 0.23,
+        "spatial_score": 0.1,
+        "llm_score": 0.1675
+      },
+      "weighted_score": 0.2774,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250309101725564.jpg",
+      "dimensions": {
+        "class_score": 0.4055,
+        "embedding_score": 0.2694,
+        "quality_score": 0.3374,
+        "spatial_score": 0.12,
+        "llm_score": 0.1675
+      },
+      "weighted_score": 0.2759,
+      "level": "low_value",
+      "reason": "与训练集分布较近，回流价值有限"
+    },
+    {
+      "filename": "20250311140729961.jpg",
+      "dimensions": {
+        "class_score": 0.4872,
+        "embedding_score": 0.2699,
+        "quality_score": 0.2034,
+        "spatial_score": 0.1,
+        "llm_score": 0.1675
+      },
+      "weighted_score": 0.2734,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311141042033.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.2699,
+        "quality_score": 0.2256,
+        "spatial_score": 0.0,
+        "llm_score": 0.185
+      },
+      "weighted_score": 0.2716,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311210115553.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2704,
+        "quality_score": 0.1531,
+        "spatial_score": 0.0,
+        "llm_score": 0.15
+      },
+      "weighted_score": 0.2702,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311141111805.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.2698,
+        "quality_score": 0.2256,
+        "spatial_score": 0.0,
+        "llm_score": 0.15
+      },
+      "weighted_score": 0.2664,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311200845544.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2702,
+        "quality_score": 0.0803,
+        "spatial_score": 0.0,
+        "llm_score": 0.185
+      },
+      "weighted_score": 0.2645,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250307200237814.jpg",
+      "dimensions": {
+        "class_score": 0.4,
+        "embedding_score": 0.2708,
+        "quality_score": 0.0515,
+        "spatial_score": 0.0,
+        "llm_score": 0.5
+      },
+      "weighted_score": 0.264,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250311202246517.jpg",
+      "dimensions": {
+        "class_score": 0.5745,
+        "embedding_score": 0.2703,
+        "quality_score": 0.0425,
+        "spatial_score": 0.0,
+        "llm_score": 0.185
+      },
+      "weighted_score": 0.2588,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    },
+    {
+      "filename": "20250307200028051.jpg",
+      "dimensions": {
+        "class_score": 0.5163,
+        "embedding_score": 0.271,
+        "quality_score": 0.0413,
+        "spatial_score": 0.0,
+        "llm_score": 0.1675
+      },
+      "weighted_score": 0.2417,
+      "level": "low_value",
+      "reason": "图片质量偏低"
+    }
+  ],
+  "summary": {
+    "total_test_images": 59,
+    "high_value_count": 0,
+    "medium_value_count": 46,
+    "low_value_count": 13,
+    "recommended_for_feedback": [],
+    "needs_review": [
+      "20250304175558461.jpg",
+      "20250313130858646.jpg",
+      "20250313125148959.jpg",
+      "20250311174615993.jpg",
+      "20250311172444160.jpg",
+      "20250311173639273.jpg",
+      "20250313115511993.jpg",
+      "20250311211005385.jpg",
+      "20250311174802484.jpg",
+      "20250311171155689.jpg",
+      "20250308101243059.jpg",
+      "20250311203044672.jpg",
+      "20250308091621192.jpg",
+      "20250313113730400.jpg",
+      "20250308101342496.jpg",
+      "20250313135338525.jpg",
+      "20250317173104279.jpg",
+      "20250313122145887.jpg",
+      "20250311172640541.jpg",
+      "20250307155344492.jpg",
+      "20250317171227401.jpg",
+      "20250307200935002.jpg",
+      "20250311140911964.jpg",
+      "20250311205908590.jpg",
+      "20250311174627032.jpg",
+      "20250311210140837.jpg",
+      "20250317143433695.jpg",
+      "20250307161132405.jpg",
+      "20250311201406902.jpg",
+      "20250311141625963.jpg",
+      "20250307155309293.jpg",
+      "20250307144503908.jpg",
+      "20250311202202183.jpg",
+      "20250311141522198.jpg",
+      "20250311140836442.jpg",
+      "20250311171619743.jpg",
+      "20250309101445392.jpg",
+      "20250311175457837.jpg",
+      "20250311200819775.jpg",
+      "20250311201712256.jpg",
+      "20250311175934481.jpg",
+      "20250309101912046.jpg",
+      "20250311173249617.jpg",
+      "20250320100300630.jpg",
+      "20250318092451722.jpg",
+      "20250311175603358.jpg"
+    ],
+    "duration_seconds": 1752.3
+  }
+}

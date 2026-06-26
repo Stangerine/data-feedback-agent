@@ -10,9 +10,9 @@ A two-layer data feedback system for construction vehicle detection: a TypeScrip
 
 ```
 User → PI Agent (TypeScript, agent.ts)
-         ├── tools.ts (7 HTTP tool wrappers)
+         ├── tools.ts (9 HTTP tool wrappers)
          │    ├── 4 detection tools → detection-service (:8001)
-         │    └── 3 analysis tools  → data-analysis-service (:8002)
+         │    └── 5 analysis tools  → data-analysis-service (:8002)
          └── .pi/skills/ (3 SKILL.md files define workflows)
 
 detection-service (:8001)

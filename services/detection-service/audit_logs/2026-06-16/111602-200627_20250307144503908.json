@@ -1,0 +1,124 @@
+{
+  "timestamp": "2026-06-16T11:16:02.200463",
+  "image_path": "/home/shao/zzq/误报/20250307144503908.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.9489705562591553,
+      "bbox": [
+        831.09375,
+        636.71484375,
+        1133.015625,
+        849.10546875
+      ]
+    },
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.9134074449539185,
+      "bbox": [
+        755.34375,
+        412.6640625,
+        966.73828125,
+        621.19921875
+      ]
+    },
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "confidence": 0.8862314820289612,
+      "bbox": [
+        458.833740234375,
+        445.5555725097656,
+        634.3954467773438,
+        565.7730712890625
+      ]
+    },
+    {
+      "class_id": 0,
+      "class_name": "wajueji",
+      "confidence": 0.8175221681594849,
+      "bbox": [
+        761.5323486328125,
+        344.16912841796875,
+        854.6431274414062,
+        436.27801513671875
+      ]
+    },
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.6299819946289062,
+      "bbox": [
+        749.765625,
+        411.3984375,
+        888.5625,
+        564.234375
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"detection_index\": 1, \"reason\": \"检测框覆盖的是底部偏右的大型橙色挖掘机，可见履带底盘和多关节挖臂/铲斗特征，不具备吊车必需的吊钩、钢丝绳等要素，类别错误。\", \"reported_class\": \"diaoche\"}, {\"actual_class\": \"chanche\", \"detection_index\": 4, \"reason\": \"检测框覆盖的是中上部靠河边的黄色轮式铲车/装载机，可见前端装载结构和铲斗形态，不是具有细长多关节挖臂的挖掘机，类别错误。\", \"reported_class\": \"wajueji\"}, {\"actual_class\": \"yunshuche\", \"detection_index\": 5, \"reason\": \"该框与第2个检测框覆盖同一辆绿色运输车，属于重复检测；第2个框已覆盖该真实目标。\", \"reported_class\": \"yunshuche\"}], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"medium\", \"description\": \"画面右侧工地内有一台红色桁架臂起重设备，能看到履带/底盘与长起重臂结构，未被任何检测框覆盖。受俯视角和遮挡影响吊钩细节不十分清晰，因此置信度为中等。\", \"location\": \"画面右侧中部，绿色围挡/建筑旁，红色斜向桁架臂从下方向上延伸的位置\"}, {\"actual_class\": \"wajueji\", \"actual_class_cn\": \"挖掘机\", \"confidence_level\": \"high\", \"description\": \"画面下方偏中有一台大型橙色履带挖掘机，主体、履带和长挖臂清晰可见，但未被正确检测框覆盖；第1个框将其误标为吊车，按规则已作为误报，不在此重复计数。\", \"location\": \"画面下方偏中至偏右，围挡内道路上橙色长臂设备位置\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 3, \"missed_detection_count\": 2, \"summary\": \"5个检测中有2个类别正确或基本覆盖目标，但存在挖掘机误判为吊车、铲车误判为挖掘机以及绿色运输车重复检测。画面右侧红色起重设备未检出；底部橙色挖掘机已被错误类别框覆盖，按互斥规则应主要视为误报而非重复漏报。\", \"total_detections\": 5}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "actual_class": "wajueji",
+        "reason": "检测框覆盖的是底部偏右的大型橙色挖掘机，可见履带底盘和多关节挖臂/铲斗特征，不具备吊车必需的吊钩、钢丝绳等要素，类别错误。",
+        "bbox": []
+      },
+      {
+        "detection_index": 4,
+        "reported_class": "wajueji",
+        "actual_class": "chanche",
+        "reason": "检测框覆盖的是中上部靠河边的黄色轮式铲车/装载机，可见前端装载结构和铲斗形态，不是具有细长多关节挖臂的挖掘机，类别错误。",
+        "bbox": []
+      },
+      {
+        "detection_index": 5,
+        "reported_class": "yunshuche",
+        "actual_class": "yunshuche",
+        "reason": "该框与第2个检测框覆盖同一辆绿色运输车，属于重复检测；第2个框已覆盖该真实目标。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面右侧中部，绿色围挡/建筑旁，红色斜向桁架臂从下方向上延伸的位置",
+        "description": "画面右侧工地内有一台红色桁架臂起重设备，能看到履带/底盘与长起重臂结构，未被任何检测框覆盖。受俯视角和遮挡影响吊钩细节不十分清晰，因此置信度为中等。",
+        "confidence_level": "medium"
+      },
+      {
+        "actual_class": "wajueji",
+        "actual_class_cn": "挖掘机",
+        "location": "画面下方偏中至偏右，围挡内道路上橙色长臂设备位置",
+        "description": "画面下方偏中有一台大型橙色履带挖掘机，主体、履带和长挖臂清晰可见，但未被正确检测框覆盖；第1个框将其误标为吊车，按规则已作为误报，不在此重复计数。",
+        "confidence_level": "high"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 5,
+      "false_positive_count": 3,
+      "missed_detection_count": 2,
+      "detection_quality": "poor",
+      "summary": "5个检测中有2个类别正确或基本覆盖目标，但存在挖掘机误判为吊车、铲车误判为挖掘机以及绿色运输车重复检测。画面右侧红色起重设备未检出；底部橙色挖掘机已被错误类别框覆盖，按互斥规则应主要视为误报而非重复漏报。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 27690
+}

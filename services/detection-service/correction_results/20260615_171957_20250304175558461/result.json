@@ -1,0 +1,62 @@
+{
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "small_model_detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "correction": {
+    "false_positive_corrections": [],
+    "missed_detection_corrections": [
+      {
+        "bbox_normalized": {
+          "x_max": 0.416,
+          "x_min": 0.35,
+          "y_max": 0.708,
+          "y_min": 0.493
+        },
+        "class_name": "diaoche",
+        "class_name_cn": "吊车",
+        "confidence": 0.82,
+        "description": "画面中部偏下、建筑左侧的黄色吊装设备，黄色车体和竖直/横向吊臂清晰可见，未被已有检测框覆盖。"
+      }
+    ],
+    "summary": "已有第1个检测框覆盖左侧橙色吊车，类别为吊车，基本正确无需修正；新增1个未被检测框覆盖的清晰黄色吊车目标。"
+  },
+  "corrected_detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ],
+      "source": "small_model"
+    },
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "class_name_cn": "吊车",
+      "confidence": 0.82,
+      "bbox": [
+        672,
+        532,
+        799,
+        765
+      ],
+      "description": "画面中部偏下、建筑左侧的黄色吊装设备，黄色车体和竖直/横向吊臂清晰可见，未被已有检测框覆盖。",
+      "source": "llm_added"
+    }
+  ]
+}

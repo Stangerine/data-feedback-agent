@@ -12,11 +12,11 @@ __pycache__/
 .pi/sessions/
 
 # Generated outputs
-analysis_results/
+# analysis_results/
 tmp/
-services/detection-service/audit_logs/
-services/detection-service/correction_results/
-services/detection-service/eval_results/
+# services/detection-service/audit_logs/
+# services/detection-service/correction_results/
+# services/detection-service/eval_results/
 
 # OS
 .DS_Store

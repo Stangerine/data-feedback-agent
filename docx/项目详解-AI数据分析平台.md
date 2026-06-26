@@ -43,13 +43,13 @@
 │  PI Agent 层（TypeScript, GPT-5.5 推理）              │
 │                                                     │
 │  3 个 Skills（定义工作流）                              │
-│    ├── detection-review   检测验证                    │
-│    ├── detection-correction 检测校准                  │
-│    └── data-analysis      多维归因分析                │
+│    ├── detection-review     检测校验（只分析不生成图）  │
+│    ├── detection-correction 检测纠正（校验+可视化）     │
+│    └── data-analysis        误报归因与数据回流分析      │
 │                                                     │
-│  7 个 Tools（HTTP 调用封装）                           │
+│  9 个 Tools（HTTP 调用封装）                           │
 │    ├── 4 个检测工具 → detection-service (:8001)       │
-│    └── 3 个分析工具 → data-analysis-service (:8002)   │
+│    └── 5 个分析工具 → data-analysis-service (:8002)   │
 └──────────────────────┬──────────────────────────────┘
                        │ HTTP REST
          ┌─────────────┴─────────────┐
@@ -58,11 +58,11 @@
 │ detection-service │      │ data-analysis-service │
 │ :8001             │      │ :8002                 │
 │                   │      │                       │
-│ • YOLO 远程检测    │      │ • 6 维语义分析         │
+│ • YOLO 远程检测    │      │ • 7 维语义分析         │
 │ • LLM 误报/漏报验证│      │   (BGE-VL-large)      │
 │ • LLM 校准修正     │      │ • 类别分布分析          │
 │ • 可视化输出       │      │ • LLM 归因分析          │
-│                   │      │ • 综合评分排序          │
+│                   │      │ • 批量分析与导出        │
 │ 调用: YOLO API     │      │ 调用: BGE-VL + MiMo    │
 │       MiMo v2.5   │      │       (CUDA GPU)       │
 └──────────────────┘      └──────────────────────┘
@@ -73,9 +73,38 @@
 | 设计决策 | 原因 |
 |---------|------|
 | 单 Agent 而非 Multi-Agent | 当前任务流程固定，单 Agent 足够；后续任务复杂了可拆分为多 Agent |
-| Agent 用 GPT-5.5，服务用 MiMo v2.5 | Agent 负责推理和工具选择（需要强推理能力），服务做结构化任务（MiMo 更快更便宜） |
+| Agent 用 GPT-5.5，服务用 MiMo v2.5 | Agent 负责推理和工具选择（需要强推理能力），服务做结构化任务（MiMo 更快更便宜）。两者都通过 OpenAI 兼容 API 调用 |
 | Skill 驱动工作流 | 每个 Skill 是一个标准化流程定义，Agent 按需加载，保证流程一致性 |
 | Function Calling 而非纯文本解析 | 用 OpenAI 风格的 function calling 让 LLM 输出结构化 JSON，配合 JSON fallback 解析保证鲁棒性 |
+
+### 2.3 工具清单（9 个）
+
+**检测工具（→ detection-service :8001）**：
+
+| 工具名 | 功能 | 调用的 API |
+|--------|------|-----------|
+| `verify_detection` | 检测 + LLM 校验 | `/api/verify` |
+| `correct_detection` | 检测 + LLM 纠正 + 可视化 | `/api/correct` |
+| `verify_direct` | 直接校验（跳过检测 API） | `/api/verify_direct` |
+| `check_detection_service` | 检测服务健康检查 | `/health` |
+
+**分析工具（→ data-analysis-service :8002）**：
+
+| 工具名 | 功能 | 调用的 API |
+|--------|------|-----------|
+| `analyze_dataset` | 数据集画像（类别分布、bbox 统计） | `/api/profile` |
+| `analyze_single` | 单图 7 维归因分析 | `/api/analyze/single` |
+| `analyze_batch` | 批量归因分析 | `/api/analyze/batch` |
+| `export_analysis` | 导出分析结果（JSON/CSV） | `/api/export` |
+| `check_analysis_service` | 分析服务健康检查 | `/health` |
+
+### 2.4 Skill 清单（3 个）
+
+| Skill | 触发场景 | 使用的工具 |
+|-------|---------|-----------|
+| `detection-review` | 用户要求校验检测结果、检查误报 | verify_detection, verify_direct, check_detection_service |
+| `detection-correction` | 用户要求纠正检测、生成对比图 | correct_detection, check_detection_service |
+| `data-analysis` | 用户要求分析误报原因、回流建议 | analyze_single, analyze_batch, analyze_dataset, export_analysis |
 
 ---
 
@@ -214,12 +243,13 @@
 
 对误报/漏报样本进行**根因分析**，从多个维度分析问题原因，为后续校准和回流决策提供依据。
 
-### 4.2 6 个语义分析维度
+### 4.2 7 个分析维度
 
-使用 **BGE-VL-large**（CLIP 变体，本地 CUDA GPU）进行图像-文本语义匹配：
+分析分为 7 个维度，其中 6 个使用 **BGE-VL-large**（CLIP 变体，本地 CUDA GPU）进行图像-文本语义匹配，1 个基于统计分析：
 
 | 维度 | 类别 | 分析方法 |
 |------|------|---------|
+| **类别 (class)** | 9 类施工车辆 | 训练集类别分布统计，识别稀有类 |
 | **光照 (lighting)** | bright / moderate / dim | 图像 embedding 与文本 prompt 余弦相似度 |
 | **视角 (viewpoint)** | front / side / rear / overhead | 同上 |
 | **清晰度 (blur)** | sharp / motion-blur / out-of-focus | 同上 |
@@ -250,7 +280,7 @@
 
 - **覆盖率缺口（Coverage Gap）**：训练集中某类占比 < 2% → 标记为稀有类
 - **过代表类（Overrepresented）**：测试集中某类占比 > 训练集占比 × 1.5 → 标记为偏高
-- **回流价值评分**：`0.6 × rarity_score + 0.4 × prevalence_score`
+- **类别覆盖评分**：稀有类的误报/漏报更容易被判定为"数据缺陷"，建议优先回流
 
 ### 4.4 预计算机制
 
@@ -264,6 +294,7 @@
     │
     ▼
 遍历训练集图片 → 6 个 SemanticAnalyzer 批量计算
+    │              (lighting/viewpoint/blur/weather/timeOfDay/environment)
     │              生成 train_semantic_distribution
     ▼
 缓存在内存中，后续每张测试图片只需计算自身特征，与缓存分布对比
@@ -277,25 +308,27 @@
 - 图片路径和检测结果
 - 问题类型（误报/漏报）
 - 类别覆盖率分析（缺口 + 过代表类）
-- 6 个语义维度的分析结果 + 与训练集分布的对比
+- 7 个分析维度的结果 + 与训练集分布的对比
 
 **LLM 输出结构**：
 
 ```python
 {
-    "attribution_type": "environment",     # 归因类型
-    # 可选值：background_noise / class_confusion / occlusion
-    #        environment / annotation_error / other
-    "confidence": 0.85,
-    "reasoning": "该图片为夜间施工场景，训练集中夜间样本占比仅3%...",
+    "filename": "20250304175558461.jpg",
+    "attribution_type": "数据缺陷",     # 归因类型
+    # 可选值：数据缺陷 / 背景干扰 / 类间混淆 / 遮挡截断 / 环境因素 / 标注错误 / 其他
+    "confidence": 0.90,
+    "reasoning": "打桩机在训练集中仅占1.1%，样本严重不足...",
     "dimension_attributions": [{
-        "dimension": "lighting",
-        "contribution": 0.4,        # 该维度对问题的贡献度
-        "reasoning": "夜间低光照导致车辆轮廓不清晰"
+        "dimension": "class",
+        "category": "dazhuangji",
+        "train_coverage": 0.011,        # 训练集中该类别的占比
+        "is_gap": true,                 # 是否是覆盖缺口
+        "contribution": "打桩机样本严重不足，模型缺乏泛化能力"
     }, ...],
-    "main_cause_dimension": "lighting",
-    "feedback_suggestion": "建议补充夜间施工场景的标注数据",
-    "should_feedback": true            # 是否建议回流
+    "main_cause_dimension": "class",
+    "feedback_suggestion": "应优先补充打桩机(dazhuangji)相关训练数据",
+    "should_feedback": true             # 是否建议回流
 }
 ```
 
@@ -303,12 +336,13 @@
 
 | 归因类型 | 含义 | 回流价值 |
 |---------|------|---------|
-| background_noise | 背景干扰，模型将背景误识别为目标 | 中 |
-| class_confusion | 类间混淆，相似车型互相误判 | 高 |
-| occlusion | 遮挡导致漏检或误判 | 高 |
-| environment | 环境因素（光照、天气等） | 最高 |
-| annotation_error | 标注错误（原标注就有问题） | 需人工复核 |
-| other | 其他原因 | 视情况 |
+| 数据缺陷 | 训练集缺少该类别/场景的样本 | **最高** |
+| 背景干扰 | 背景物体与目标视觉特征相似 | 中 |
+| 类间混淆 | 不同目标类别的外观相似（如吊车与打桩机） | 高 |
+| 遮挡截断 | 目标被遮挡或画面截断 | 高 |
+| 环境因素 | 特殊环境（光照、天气等）导致 | 最高 |
+| 标注错误 | 原始标注本身有误 | 需人工复核 |
+| 其他 | 其他原因 | 视情况 |
 
 ---
 
@@ -416,50 +450,33 @@
 
 ---
 
-## 六、核心流程四：回流建议生成（综合评分）
+## 六、核心流程四：回流建议生成（LLM 归因决策）
 
-### 6.1 评分公式
+### 6.1 决策机制
 
-```
-feedback_score = 0.25 × class_score        # 类别覆盖分
-               + 0.30 × embedding_score     # Embedding 分布分
-               + 0.15 × quality_score       # 图像质量分
-               + 0.15 × spatial_score       # 空间特征分
-               + 0.15 × llm_score           # LLM 归因分
-```
+当前版本不再使用加权评分公式，而是由 **LLM 综合所有维度信息直接做出归因判断和回流建议**。LLM 会：
 
-### 6.2 各维度评分说明
+1. 查看该图片在 7 个维度上的分类结果
+2. 对比训练集中各维度的覆盖情况
+3. 综合判断误报/漏报的根本原因
+4. 给出是否建议回流的二元决策 + 中文建议
 
-**类别覆盖分 (0.25)**：
-- 该样本属于训练集稀有类 → 高分
-- 该样本属于训练集已充分覆盖的类 → 低分
+### 6.2 回流决策逻辑
 
-**Embedding 分布分 (0.30)**（权重最高）：
-- 测试图片 embedding 与训练集分布的距离（OOD 分数）
-- OOD 分数越高 → 与训练集差异越大 → 回流价值越高
-- 使用 BGE-VL-large 提取 embedding，计算余弦距离
-
-**图像质量分 (0.15)**：
-- 基于语义分析的清晰度、光照等维度综合评估
-- 质量过低的图片不应回流（会引入噪声）
-
-**空间特征分 (0.15)**：
-- 小目标（面积 < 0.5%）和边缘目标占比
-- 小目标/边缘目标多 → 模型更难识别 → 回流价值高
-
-**LLM 归因分 (0.15)**：
-- LLM 判断的归因类型
-- 环境因素和遮挡导致的误报 → 回流价值最高
-- 背景干扰 → 中等价值
-- 标注错误 → 需人工复核
-
-### 6.3 回流决策阈值
-
-| 评分区间 | 决策 | 说明 |
+| 判断依据 | 决策 | 说明 |
 |---------|------|------|
-| >= 0.6 | **推荐回流** (high_value) | 高价值样本，优先加入训练集 |
-| 0.3 ~ 0.6 | **建议人工复核** (medium_value) | 有一定价值，需人工确认 |
-| < 0.3 | **不建议回流** (low_value) | 低价值或可能引入噪声 |
+| 训练集缺少该类别/场景 | **建议回流** | 数据缺陷是最强的回流信号 |
+| 多个维度存在覆盖缺口 | **建议回流** | 综合覆盖不足 |
+| 仅单一环境因素导致 | **视情况** | 如果该环境频繁出现则回流 |
+| 标注错误导致 | **需人工确认** | 自动回流可能引入错误 |
+| 所有维度覆盖充足 | **不建议回流** | 可能是模型本身的问题 |
+
+### 6.3 归因置信度
+
+LLM 同时输出归因置信度 (0-1)：
+- **>= 0.8**: 高确信，归因结果可靠
+- **0.5 ~ 0.8**: 中等确信，建议结合人工判断
+- **< 0.5**: 低确信，需要更多样本验证
 
 ---
 
@@ -473,22 +490,27 @@ feedback_score = 0.25 × class_score        # 类别覆盖分
         ▼
   PI Agent（GPT-5.5 推理，选择工具）
         │
-        ├─→ 1. verify_detection（检测验证）
+        ├─→ 1. verify_detection（检测校验）
         │     → detection-service
-        │     → YOLO 检测 + MiMo LLM 验证
-        │     → 返回：1个误报（类别混淆），1个漏报
+        │     → YOLO 检测 + MiMo LLM 校验
+        │     → 返回：1个误报（吊车→打桩机），1个漏报（吊车）
         │
-        ├─→ 2. compare_data（多维归因分析）
+        ├─→ 2. analyze_single（单图归因分析）
         │     → data-analysis-service
-        │     → 6 维语义分析：夜间(dim) + 侧视(side) + 清晰(sharp)
-        │     →            + 阴天(cloudy) + 夜间(night) + 工地(construction-site)
-        │     → 类别分析：漏报的挖掘机属于稀有类（训练集仅 2.3%）
-        │     → LLM 归因：主要原因是夜间低光照（贡献度 0.4）
-        │     → 综合评分：0.72 → 推荐回流
+        │     → 7 维分析：
+        │       class: dazhuangji, 训练集仅 1.1% ← 覆盖缺口
+        │       lighting: dim (89.8%)
+        │       viewpoint: overhead (31.2%)
+        │       blur: motion-blur (86.1%)
+        │       weather: rain (52.4%)
+        │       timeOfDay: dusk (15.9%)
+        │       environment: construction-site (96.0%)
+        │     → LLM 归因：数据缺陷，打桩机样本严重不足
+        │     → 置信度：0.90 → 建议回流
         │
-        └─→ 3. correct_detection（自动校准）
+        └─→ 3. correct_detection（自动纠正）
               → detection-service
-              → 误报修正：dazhuangji → chanche（类别修正）
+              → 误报修正：diaoche → dazhuangji（类别修正）
               → 漏报补充：LLM 输出精确 bbox
               → 质量过滤后生成 corrected.jpg
               → 保存 small_model.jpg + corrected.jpg + result.json
@@ -513,13 +535,39 @@ create_llm_client("ollama")    # Ollama 本地模型
 
 所有服务共享项目根目录的 `config.yaml`，通过**向上遍历目录树**的方式查找。支持环境变量覆盖关键字段。
 
+**关键配置项**：
+
+```yaml
+data:
+  training_dir: "训练集路径"
+  test_dir: "误报测试集路径"
+
+llm:
+  protocol: "openai"           # LLM 协议：openai / anthropic / ollama
+  api_url: "https://..."       # API 地址
+  api_key: "..."
+  model: "mimo-v2.5"           # 模型名
+  timeout: 300
+  temperature: 0.1
+
+detection:
+  api_url: "http://192.168.99.180:49080/api/request/objectDetection"
+  model_id: "wajueji_chanche_202606111433"
+
+semantic:
+  model_name: "BGE-VL-large 模型路径"
+  device: "cuda"
+  cache_dir: "./semantic_cache"
+```
+
 ### 8.3 Embedding 缓存
 
-BGE-VL-large 的图像 embedding 计算较慢，采用**文件缓存**策略：
-- 缓存 key：图片文件的 MD5 哈希
-- 缓存格式：numpy `.npy` 文件
-- 缓存目录：`./semantic_cache/`
-- 同一张图片不会重复计算
+BGE-VL-large 的图像 embedding 计算较慢（训练集 10104 张约需 20 分钟），采用**文件缓存**策略：
+- 缓存 key：`MD5(维度名 + 排序后的图片路径列表)`
+- 缓存格式：numpy `.npy` 文件 + `_paths.json` 元数据
+- 缓存目录：`./semantic_cache/`（config.yaml 可配置）
+- 同一批图片 + 同一维度不会重复计算
+- 首次启动后缓存命中，初始化从 ~20 分钟降至 ~37 秒
 
 ### 8.4 审计系统
 
@@ -555,8 +603,8 @@ Prompt 中设计了多层约束：只报告"清晰可见 + 足够大 + 可识别
 
 ### 5. 多维度归因而非单一判断
 
-不是简单地判断"这个样本值不值得回流"，而是从类别覆盖、语义分布、图像质量、空间特征、LLM 归因 5 个维度综合分析，给出可解释的归因结果和回流建议。
+不是简单地判断"这个样本值不值得回流"，而是从类别分布、光照、视角、模糊、天气、时间、环境 7 个维度综合分析，给出可解释的归因结果和回流建议。每个维度会标注是否是训练集的覆盖缺口，帮助定位数据缺陷。
 
 ### 6. Agent 编排 + 微服务执行的分层设计
 
-Agent 层（GPT-5.5）负责理解用户意图和工具选择，服务层（MiMo v2.5）负责具体计算。两层使用不同的 LLM，各取所长：Agent 需要强推理能力，服务需要快速稳定的结构化输出。
+Agent 层（GPT-5.5）负责理解用户意图和工具选择，服务层（MiMo v2.5）负责具体计算。两层使用不同的 LLM，各取所长：Agent 需要强推理能力，服务需要快速稳定的结构化输出。PI Agent 提供 9 个工具，通过 Skill 定义标准化工作流，Agent 按需加载 Skill 并调用对应工具。

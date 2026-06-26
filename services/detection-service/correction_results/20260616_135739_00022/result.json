@@ -1,0 +1,82 @@
+{
+  "image_path": "/home/shao/zzq/正确/00022.jpg",
+  "small_model_detections": [
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.9534500241279602,
+      "bbox": [
+        67.06732177734375,
+        5.01324462890625,
+        317.7508850097656,
+        244.11915588378906
+      ]
+    }
+  ],
+  "verification": {
+    "success": true,
+    "data": {
+      "false_positives": [
+        {
+          "detection_index": 1,
+          "reported_class": "yunshuche",
+          "actual_class": "other",
+          "confidence": 0.9,
+          "reason": "检测框覆盖的是混凝土搅拌车，后部有明显大型旋转搅拌罐，属于未列入专用类别的工程车辆，应归为 other；不是普通开放货斗/货厢/自卸斗运输车。",
+          "bbox": []
+        }
+      ],
+      "missed_detections": [],
+      "overall_assessment": {
+        "total_detections": 1,
+        "false_positive_count": 1,
+        "missed_detection_count": 0,
+        "detection_quality": "fair",
+        "summary": "主目标被框住但类别错误：图中为混凝土搅拌车，应判为 other 而非运输车。右侧背景有部分红色车辆/结构被遮挡且不完整，不作为漏报。"
+      }
+    },
+    "raw_text": "{\"false_positives\": [{\"actual_class\": \"other\", \"confidence\": 0.9, \"detection_index\": 1, \"reason\": \"检测框覆盖的是混凝土搅拌车，后部有明显大型旋转搅拌罐，属于未列入专用类别的工程车辆，应归为 other；不是普通开放货斗/货厢/自卸斗运输车。\", \"reported_class\": \"yunshuche\"}], \"missed_detections\": [], \"overall_assessment\": {\"detection_quality\": \"fair\", \"false_positive_count\": 1, \"missed_detection_count\": 0, \"summary\": \"主目标被框住但类别错误：图中为混凝土搅拌车，应判为 other 而非运输车。右侧背景有部分红色车辆/结构被遮挡且不完整，不作为漏报。\", \"total_detections\": 1}}",
+    "error": null,
+    "duration_ms": 8611,
+    "image_path": "/home/shao/zzq/正确/00022.jpg",
+    "image_size": {
+      "width": 350,
+      "height": 262
+    },
+    "detection_count": 1,
+    "attempts": 1
+  },
+  "correction": {
+    "false_positive_corrections": [
+      {
+        "detection_index": 1,
+        "reported_class": "yunshuche",
+        "corrected_class": "other",
+        "corrected_class_cn": "其他",
+        "confidence": 0.9,
+        "reason": "检测框覆盖的是混凝土搅拌车，后部有明显大型旋转搅拌罐，属于未列入专用类别的工程车辆，应归为 other；不是普通开放货斗/货厢/自卸斗运输车。"
+      }
+    ],
+    "missed_detection_corrections": [],
+    "summary": "基于校验结果修正 1 个误报类别，补充 0 个漏报目标 bbox。 校验结果无漏报目标，无需补框。"
+  },
+  "corrected_detections": [
+    {
+      "class_id": 8,
+      "class_name": "other",
+      "confidence": 0.9534500241279602,
+      "bbox": [
+        67.06732177734375,
+        5.01324462890625,
+        317.7508850097656,
+        244.11915588378906
+      ],
+      "source": "llm_corrected",
+      "original_class_name": "yunshuche",
+      "original_class_id": 7,
+      "class_name_cn": "其他",
+      "correction_confidence": 0.9,
+      "correction_reason": "检测框覆盖的是混凝土搅拌车，后部有明显大型旋转搅拌罐，属于未列入专用类别的工程车辆，应归为 other；不是普通开放货斗/货厢/自卸斗运输车。"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-06-15T16:22:43.801235",
+  "image_path": "/home/shao/zzq/误报/2025-04-01/sample/images/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"high\", \"description\": \"黄色吊装设备/吊车清晰可见，带有竖向吊臂和车体，未被现有检测框覆盖。\", \"location\": \"画面中部偏下、玻璃楼左侧施工区域内，约在黄色设备集中处\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"medium\", \"description\": \"红色格构臂吊车及下方黄色基座较清晰，现有检测框仅在边缘附近，未有效覆盖该目标主体。\", \"location\": \"画面下中部施工场地，靠近围挡内侧的竖向红色格构臂位置\"}], \"overall_assessment\": {\"detection_quality\": \"fair\", \"false_positive_count\": 0, \"missed_detection_count\": 2, \"summary\": \"已有1个吊车检测框基本覆盖左侧橙色吊车，类别可接受；但施工区域中仍有至少两台清晰可见的吊装设备未被有效检测。\", \"total_detections\": 1}}",
+  "result": {
+    "false_positives": [],
+    "missed_detections": [
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面中部偏下、玻璃楼左侧施工区域内，约在黄色设备集中处",
+        "description": "黄色吊装设备/吊车清晰可见，带有竖向吊臂和车体，未被现有检测框覆盖。",
+        "confidence_level": "high"
+      },
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面下中部施工场地，靠近围挡内侧的竖向红色格构臂位置",
+        "description": "红色格构臂吊车及下方黄色基座较清晰，现有检测框仅在边缘附近，未有效覆盖该目标主体。",
+        "confidence_level": "medium"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 0,
+      "missed_detection_count": 2,
+      "detection_quality": "fair",
+      "summary": "已有1个吊车检测框基本覆盖左侧橙色吊车，类别可接受；但施工区域中仍有至少两台清晰可见的吊装设备未被有效检测。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 33844
+}

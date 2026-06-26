@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-06-16T10:49:49.284049",
+  "image_path": "/home/shao/zzq/误报/20250304175558461.jpg",
+  "image_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "detections": [
+    {
+      "class_id": 4,
+      "class_name": "diaoche",
+      "confidence": 0.886948823928833,
+      "bbox": [
+        437.19140625,
+        510.7265625,
+        616.869140625,
+        686.080078125
+      ]
+    }
+  ],
+  "ground_truth": null,
+  "llm": {
+    "protocol": "openai",
+    "model": "gpt-5.5"
+  },
+  "source": "tool_call",
+  "raw_text": "{\"false_positives\": [{\"actual_class\": \"wajueji\", \"detection_index\": 1, \"reason\": \"检测框覆盖施工区域内的橙色挖掘机/土方机械，能看到挖臂和车身作业姿态；未见完整起重车身、起重臂、钢丝绳及吊钩组合，不满足吊车判定。\", \"reported_class\": \"diaoche\"}], \"missed_detections\": [{\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"medium\", \"description\": \"施工场地中部偏下有一台黄色起重设备，能看到黄色车身/底座与向上的起重臂结构，尺寸较大且主体较清晰，未被现有检测框覆盖。\", \"location\": \"画面中部偏下，办公楼左侧、检测框右侧附近\"}, {\"actual_class\": \"diaoche\", \"actual_class_cn\": \"吊车\", \"confidence_level\": \"medium\", \"description\": \"施工场地中下部有一台红色履带/移动起重设备，红色长臂斜向延伸，底部车身可见，现有检测框未覆盖该主体。\", \"location\": \"画面中下部靠近围挡内侧、黄色设备下方偏右\"}], \"overall_assessment\": {\"detection_quality\": \"poor\", \"false_positive_count\": 1, \"missed_detection_count\": 2, \"summary\": \"唯一检测框将挖掘机/土方机械误判为吊车。画面施工区域内还可见至少两台较清晰的大型起重设备未被检测；远处道路普通车辆及局部杆件/遮挡设备不计入漏报。\", \"total_detections\": 1}}",
+  "result": {
+    "false_positives": [
+      {
+        "detection_index": 1,
+        "reported_class": "diaoche",
+        "actual_class": "wajueji",
+        "reason": "检测框覆盖施工区域内的橙色挖掘机/土方机械，能看到挖臂和车身作业姿态；未见完整起重车身、起重臂、钢丝绳及吊钩组合，不满足吊车判定。",
+        "bbox": []
+      }
+    ],
+    "missed_detections": [
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面中部偏下，办公楼左侧、检测框右侧附近",
+        "description": "施工场地中部偏下有一台黄色起重设备，能看到黄色车身/底座与向上的起重臂结构，尺寸较大且主体较清晰，未被现有检测框覆盖。",
+        "confidence_level": "medium"
+      },
+      {
+        "actual_class": "diaoche",
+        "actual_class_cn": "吊车",
+        "location": "画面中下部靠近围挡内侧、黄色设备下方偏右",
+        "description": "施工场地中下部有一台红色履带/移动起重设备，红色长臂斜向延伸，底部车身可见，现有检测框未覆盖该主体。",
+        "confidence_level": "medium"
+      }
+    ],
+    "overall_assessment": {
+      "total_detections": 1,
+      "false_positive_count": 1,
+      "missed_detection_count": 2,
+      "detection_quality": "poor",
+      "summary": "唯一检测框将挖掘机/土方机械误判为吊车。画面施工区域内还可见至少两台较清晰的大型起重设备未被检测；远处道路普通车辆及局部杆件/遮挡设备不计入漏报。"
+    }
+  },
+  "success": true,
+  "error": null,
+  "attempts": 1,
+  "duration_ms": 21416
+}

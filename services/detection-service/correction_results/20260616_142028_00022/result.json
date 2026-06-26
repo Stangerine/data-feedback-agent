@@ -1,0 +1,59 @@
+{
+  "image_path": "/home/shao/zzq/正确/00022.jpg",
+  "small_model_detections": [
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.9534500241279602,
+      "bbox": [
+        67.06732177734375,
+        5.01324462890625,
+        317.7508850097656,
+        244.11915588378906
+      ]
+    }
+  ],
+  "verification": {
+    "success": true,
+    "data": {
+      "false_positives": [],
+      "missed_detections": [],
+      "overall_assessment": {
+        "total_detections": 1,
+        "false_positive_count": 0,
+        "missed_detection_count": 0,
+        "detection_quality": "good",
+        "summary": "检测框覆盖了主体车辆，图中为混凝土搅拌运输车，后部可见旋转搅拌筒，符合运输车(yunshuche)类别定义。右侧边缘疑似有部分红色车辆/设备露出，但主体严重遮挡且类别特征不足，不按漏报计。"
+      }
+    },
+    "raw_text": "{\"false_positives\": [], \"missed_detections\": [], \"overall_assessment\": {\"detection_quality\": \"good\", \"false_positive_count\": 0, \"missed_detection_count\": 0, \"summary\": \"检测框覆盖了主体车辆，图中为混凝土搅拌运输车，后部可见旋转搅拌筒，符合运输车(yunshuche)类别定义。右侧边缘疑似有部分红色车辆/设备露出，但主体严重遮挡且类别特征不足，不按漏报计。\", \"total_detections\": 1}}",
+    "error": null,
+    "duration_ms": 5441,
+    "image_path": "/home/shao/zzq/正确/00022.jpg",
+    "image_size": {
+      "width": 350,
+      "height": 262
+    },
+    "detection_count": 1,
+    "attempts": 1
+  },
+  "correction": {
+    "false_positive_corrections": [],
+    "missed_detection_corrections": [],
+    "summary": "基于校验结果修正 0 个误报类别，补充 0 个漏报目标 bbox。 校验结果无漏报目标，无需补框。"
+  },
+  "corrected_detections": [
+    {
+      "class_id": 7,
+      "class_name": "yunshuche",
+      "confidence": 0.9534500241279602,
+      "bbox": [
+        67.06732177734375,
+        5.01324462890625,
+        317.7508850097656,
+        244.11915588378906
+      ],
+      "source": "small_model"
+    }
+  ]
+}

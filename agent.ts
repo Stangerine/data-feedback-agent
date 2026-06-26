@@ -28,7 +28,7 @@ function detectionToolsExtension(pi: ExtensionAPI) {
   for (const tool of [...detectionTools, ...analysisTools]) {
     pi.registerTool(tool);
   }
-  console.log("✅ 已注册工具: verify_detection, correct_detection, verify_direct, check_detection_service, analyze_dataset, compare_data, check_analysis_service");
+  console.log("✅ 已注册工具: verify_detection, correct_detection, verify_direct, check_detection_service, analyze_dataset, analyze_single, analyze_batch, export_analysis, check_analysis_service");
 }
 
 // ── 创建 Agent ───────────────────────────────────────────────
@@ -61,7 +61,8 @@ session.subscribe((event) => {
 });
 
 console.log("=== 数据回流 Agent ===");
-console.log("可用工具: verify_detection / correct_detection / verify_direct / check_detection_service / analyze_dataset / compare_data / check_analysis_service");
+console.log("检测工具: verify_detection / correct_detection / verify_direct / check_detection_service");
+console.log("分析工具: analyze_dataset / analyze_single / analyze_batch / export_analysis / check_analysis_service");
 console.log("可用技能: detection-review / detection-correction / data-analysis");
 console.log('输入 "exit" 退出\n');
 
