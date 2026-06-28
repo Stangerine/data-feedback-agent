@@ -82,12 +82,15 @@ class DatasetSemanticDistribution(BaseModel):
 # ── LLM 归因分析结果 ──────────────────────────────────────
 
 class AttributionType(str, Enum):
-    """归因类型"""
-    BACKGROUND_NOISE = "背景干扰"
+    """归因类型 — 与分析的7个维度对应"""
+    LIGHTING = "光照问题"
+    VIEWPOINT = "视角问题"
+    BLUR = "清晰度问题"
+    WEATHER = "天气问题"
+    TIME_OF_DAY = "时段问题"
+    ENVIRONMENT = "环境问题"
+    CLASS_BIAS = "类别偏差"
     CLASS_CONFUSION = "类间混淆"
-    OCCLUSION = "遮挡截断"
-    ENVIRONMENT = "环境因素"
-    ANNOTATION_ERROR = "标注错误"
     OTHER = "其他"
 
 

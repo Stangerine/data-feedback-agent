@@ -7,7 +7,8 @@
       "Bash(export PATH=\"$PATH:/c/Program Files/GitHub CLI\" && gh auth status 2>&1)",
       "Read(//c/Program Files/GitHub CLI/**)",
       "Read(//c/Program Files \\(x86\\)/GitHub CLI/**)",
-      "Bash(where.exe gh:*)"
+      "Bash(where.exe gh:*)",
+      "Bash(git pull *)"
     ]
   }
 }

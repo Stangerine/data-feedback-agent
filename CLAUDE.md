@@ -59,9 +59,15 @@ npm run agent:pi       # pi run agent.ts
 ### Tests
 
 ```bash
+# Full pipeline test (detect → verify → correct → attribution)
+python tests/test_services.py
+
 # Detection service tests
 cd services/detection-service && python test/test_service.py
 cd services/detection-service && python -m pytest test/
+
+# Secondary review evaluation
+cd services/detection-service && python test/evaluate_secondary_review.py
 
 # Analysis service health
 curl http://localhost:8002/health
@@ -88,6 +94,7 @@ PI Agent config in `.pi/`:
 ## Code Structure Notes
 
 - `services/detection-service/llm/` — LLM client abstraction with factory pattern: `create_llm_client("openai"|"anthropic"|"ollama")`
+- `services/detection-service/scenarios/` — Vehicle class definitions and scenario-specific configuration
 - `services/detection-service/prompts/` — All LLM prompts are in Chinese; verification prompt includes vehicle-specific visual features
 - `services/detection-service/tools/function_calling.py` — JSON schemas for function calling (used by verifier.py and correction_service.py)
 - `services/data-analysis-service/analyzers/` — 6 semantic analyzers extend `BaseSemanticAnalyzer` (BGE-VL-large embeddings + cosine similarity); `ClassAnalyzer` is standalone; `LLMAttributionAnalyzer` aggregates all dimensions

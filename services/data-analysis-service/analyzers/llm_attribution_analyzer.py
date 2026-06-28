@@ -203,7 +203,7 @@ class LLMAttributionAnalyzer:
 
 请用 JSON 格式返回分析结果:
 {{
-    "attribution_type": "归因类型(环境因素/类间混淆/遮挡截断/背景干扰/标注错误/其他)",
+    "attribution_type": "归因类型(光照问题/视角问题/清晰度问题/天气问题/时段问题/环境问题/类别偏差/类间混淆/其他)",
     "confidence": 0.0-1.0,
     "reasoning": "详细分析原因，说明哪个维度是主因，以及该维度如何导致误报/漏报",
     "dimension_attributions": [
